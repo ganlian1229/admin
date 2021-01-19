@@ -49,6 +49,25 @@ export default [
         }],
     },
     {
+        path: "/advertising2",
+        component: () => import("../components/Container.vue"),
+        meta: {
+            show: true,
+            title: "广告位2",
+            isOne: true,
+            onePath: "advertising2"
+        },
+        children: [{
+            path: "advertising2",
+            name: "advertisingCon2",
+            meta: {
+                show: true,
+                title: "广告位2"
+            },
+            component: () => import("../views/advertising2/advertising2.vue"),
+        }],
+    },
+    {
         path: "/articleAdmin",
         component: () => import("../components/Container.vue"),
         meta: {

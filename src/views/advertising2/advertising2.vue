@@ -34,43 +34,77 @@
         </el-date-picker>
       </div>
     </div>
-
     <div class="content-scroll-box">
       <el-row v-if="dataList.length != 0">
-        <el-col :span="1">
-          <el-checkbox
-            v-model="checkedAll"
-            @change="checkedAllFun"
-          ></el-checkbox>
-        </el-col>
+        <el-col :span="2"> </el-col>
         <el-col title="序号" :span="1">序号</el-col>
-        <el-col title="合同编号" :span="3">合同编号</el-col>
-        <el-col title="单位名称" :span="4">单位名称</el-col>
-        <el-col title="项目名称" :span="3">项目名称</el-col>
-        <el-col title="订单属性" :span="4">订单属性</el-col>
-        <el-col title="金额" :span="2">金额</el-col>
-        <el-col title="负责人" :span="2">负责人</el-col>
-        <el-col title="订单状态" :span="2">订单状态</el-col>
-        <el-col title="操作" :span="4">操作</el-col>
+        <el-col title="标题" :span="4">标题</el-col>
+        <el-col :span="1"></el-col>
+        <el-col title="公司地址" :span="3">公司地址</el-col>
+        <el-col title="用户账号" :span="3">用户账号</el-col>
+        <el-col title="申请时间" :span="3">申请时间</el-col>
+        <el-col title="状态" :span="2">状态</el-col>
+        <el-col title="操作" :span="5">操作</el-col>
       </el-row>
       <div class="content-list-box" v-if="dataList.length != 0">
-        <el-row v-for="(item, index) in dataList" :key="index">
-          <el-col :span="1">
-            <el-checkbox
-              v-model="item.checked"
-              @change="checkedFun(item)"
-            ></el-checkbox>
-          </el-col>
-          <el-col title="序号" :span="1">序号</el-col>
-          <el-col title="合同编号" :span="3">合同编号</el-col>
-          <el-col title="单位名称" :span="4">单位名称</el-col>
-          <el-col title="项目名称" :span="3">项目名称</el-col>
-          <el-col title="订单属性" :span="4">订单属性</el-col>
-          <el-col title="金额" :span="2">金额</el-col>
-          <el-col title="负责人" :span="2">负责人</el-col>
-          <el-col title="订单状态" :span="2">订单状态</el-col>
-          <el-col title="操作" :span="4">操作</el-col>
-        </el-row>
+        <div
+          class="list-item-box"
+          v-for="(item, index) in dataList"
+          :key="index"
+        >
+          <el-row :class="item.checked ? 'act' : ''">
+            <el-col :span="2" @click.native="dataListClick(item)">
+              <i class="el-icon-arrow-right"></i>
+            </el-col>
+            <el-col title="序号" :span="1">序号</el-col>
+            <el-col title="标题" :span="4">标题</el-col>
+            <el-col :span="1"></el-col>
+            <el-col title="公司地址" :span="3">公司地址</el-col>
+            <el-col title="用户账号" :span="3">用户账号</el-col>
+            <el-col title="申请时间" :span="3">申请时间</el-col>
+            <el-col title="状态" :span="2">状态</el-col>
+            <el-col title="操作" :span="5">操作</el-col>
+          </el-row>
+          <div class="item-hide-box" :class="item.checked ? 'act' : ''">
+            <h6 class="hide-tit">更多信息</h6>
+            <div class="hide-item">
+              <span class="hide-text">联系人：</span>
+              <span class="content-text"> 大大大 </span>
+            </div>
+            <div class="hide-item">
+              <span class="hide-text">联系电话：</span>
+              <span class="content-text"> 123123123 </span>
+            </div>
+            <div class="hide-item">
+              <span class="hide-text">标题：</span>
+              <span class="content-text">啊实打实多</span>
+            </div>
+            <div class="hide-item">
+              <span class="hide-text">详细地址：</span>
+              <span class="content-text">阿是大师大师的</span>
+            </div>
+            <div class="hide-item">
+              <span class="hide-text">服务区域：</span>
+              <span class="content-text">啊实打实多</span>
+            </div>
+            <div class="hide-item">
+              <span class="hide-text">详细说明：</span>
+              <span class="content-text">
+                啊实打啊实打实多啊实打实多啊实打实多啊实打实多啊实打实多啊实打实多啊实打实多啊实打实多啊实打实多啊实打实多啊实打实多啊实打实多啊实打实多啊实打实多啊实打实多啊实打实多实多
+              </span>
+            </div>
+            <div class="hide-item">
+              <span class="hide-text">营业执照：</span>
+              <span class="content-text"> </span>
+              <span class="btn"> 查看 </span>
+            </div>
+            <div class="hide-item">
+              <span class="hide-text">服务图片：</span>
+              <span class="content-text"> </span>
+              <span class="btn"> 查看 </span>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="none-data-box" v-else>暂无数据</div>
     </div>
@@ -150,6 +184,9 @@ export default {
   },
   mounted() {},
   methods: {
+    dataListClick(item) {
+      item.checked = !item.checked;
+    },
     //筛选方法
     filterFun() {
       this.pageNum = 0;

@@ -6,7 +6,7 @@ import router from './router'
 import store from './store'
 //添加element-ui
 import elementUI from "element-ui";
-import "element-ui/lib/theme-chalk/index.css";
+// import "element-ui/lib/theme-chalk/index.css";
 //添加element-ui到vue
 Vue.use(elementUI);
 //请求封装

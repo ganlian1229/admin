@@ -16,5 +16,6 @@ export default {
 </script>
 <style lang="less">
 .article-admin {
+    background-color: transparent !important;
 }
 </style>

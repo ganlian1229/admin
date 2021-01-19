@@ -1,19 +1,25 @@
-# admin
+# 说明
 
-## Project setup
+这个后台管理系统模板可扩展性大（就是里面啥也没有）
+只提供了两种列表样式和一套基本结构
+不喜勿喷！
+
+## 安装依赖
+
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### 运行
+
 ```
 npm run serve
+默认运行在8085端口
+可自己修改vue.config.js修改端口
 ```
 
-### Compiles and minifies for production
+### 打包
+
 ```
 npm run build
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

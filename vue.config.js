@@ -5,29 +5,33 @@ module.exports = {
         open: true,
         hot: true,
     },
+    //关闭eslint
+    lintOnSave: false,
     assetsDir: './',
     publicPath: './',
+    //打包后输出文件夹名称
     outputDir: 'admindist',
-    transpileDependencies: ["iview"],
+    //为了兼容ie  在打包的时候编译  当然element-ui是不需要编译的  先写着这里
+    transpileDependencies: ["element-ui"],
     runtimeCompiler: undefined,
     productionSourceMap: false,
     parallel: undefined,
     css: undefined,
-    chainWebpack: config => {
-        // 其他配置
-        const imagesRule = config.module.rule('images')
-        imagesRule.uses.clear()
-        imagesRule.use('url-loader')
-            .loader('url-loader')
-            .options({
-                limit: 1,
-                fallback: {
-                    loader: 'file-loader',
-                    options: {
-                        name: 'img/[name].[ext]',
-                        // publicPath: process.env.NODE_ENV === 'production' ? '//game.gtimg.cn/images/slg/ingame/all201905/' : './'
-                    }
-                }
-            });
-    }
+    // chainWebpack: config => {
+    //     // 其他配置
+    //     const imagesRule = config.module.rule('images')
+    //     imagesRule.uses.clear()
+    //     imagesRule.use('url-loader')
+    //         .loader('url-loader')
+    //         .options({
+    //             limit: 1,
+    //             fallback: {
+    //                 loader: 'file-loader',
+    //                 options: {
+    //                     name: 'img/[name].[ext]',
+    //                     // publicPath: process.env.NODE_ENV === 'production' ? '//game.gtimg.cn/images/slg/ingame/all201905/' : './'
+    //                 }
+    //             }
+    //         });
+    // }
 }

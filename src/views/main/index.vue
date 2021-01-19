@@ -10,7 +10,9 @@
     </p>
     <p>使用全局过滤器转化的大写金额：{{ number | smallToBig }}</p>
     <p>使用vuex储存的登录userId：{{ userInfo.userId }}</p>
-    <el-button @click="filtersFun()">点我手动调用全局过滤器</el-button>
+    <el-button size="small" type="primary" @click="filtersFun()">
+      点我手动调用全局过滤器
+    </el-button>
   </div>
 </template>
 <script>
@@ -35,8 +37,10 @@ export default {
 </script>
 <style lang="less">
 .main-index {
+  background-color: transparent !important;
   .test {
     display: flex;
+    align-items: center;
     .el-input {
       width: 150px;
       margin-left: 10px;
