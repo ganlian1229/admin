@@ -22,4 +22,9 @@ npm run serve
 
 ```
 npm run build
+添加环境变量 VUE_APP_CURRENTMODE == 'production'
+```
+```
+npm run build:test
+添加环境变量 VUE_APP_CURRENTMODE == 'test'
 ```

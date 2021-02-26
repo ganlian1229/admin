@@ -1,12 +1,22 @@
 import Axios from 'axios';
 import QS from "qs";
-import router from './router/index';
-import { resetRouter } from './router/index';
+import router from '@/router/index';
 import { Loading, Message } from "element-ui";
 // import store from "@/store/index.js"
 // 请求头
 Axios.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded; charset=UTF-8";
-Axios.defaults.baseURL = "https://ty.fengyugo.com/golf/";
+
+if (process.env.VUE_APP_CURRENTMODE == 'production') {
+    //运行 npm run build时候
+    Axios.defaults.baseURL = "https://ty.fengyugo.com/golf/";
+} else if (process.env.VUE_APP_CURRENTMODE == 'test') {
+    //运行 npm run build:test时候
+    Axios.defaults.baseURL = "https://ty.fengyugo.com/golf/";
+} else {
+    //本地运行的时候（需要跨域）
+    Axios.defaults.baseURL = "/request";
+}
+
 //get请求方法
 export function get(url, params) {
     return new Promise((resolve, reject) => {
@@ -53,12 +63,9 @@ export function post(url, params) {
                         name: "login"
                     })
                     sessionStorage.clear();
-                    resetRouter();
-
                 } else {
-                    // resolve(res.data);
+                    reject(res.data);
                     Message.error(res.data.msg);
-
                 }
             })
             .catch(err => {
@@ -97,10 +104,8 @@ export function multiPost(url, FormData) {
                         name: "login"
                     })
                     sessionStorage.clear();
-                    resetRouter();
-
                 } else {
-                    resolve(res.data);
+                    reject(res.data);
                     Message.error(res.data.msg);
                 }
             })

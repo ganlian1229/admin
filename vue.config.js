@@ -4,13 +4,24 @@ module.exports = {
         port: 8085,
         open: true,
         hot: true,
+        proxy: {
+            //配置跨域
+            '/request': {
+                target: "https://ty.fengyugo.com/golf/",
+                ws: true,
+                changOrigin: true,
+                pathRewrite: {
+                    '^/request': ''
+                }
+            }
+        }
     },
     //关闭eslint
     lintOnSave: false,
     assetsDir: './',
     publicPath: './',
     //打包后输出文件夹名称
-    outputDir: 'admindist',
+    outputDir: process.env.outputDir,
     //为了兼容ie  在打包的时候编译  当然element-ui是不需要编译的  先写着这里
     transpileDependencies: ["element-ui"],
     runtimeCompiler: undefined,

@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "cross-env NODE_ENV=production vue-cli-service build",
+    "build:test": "cross-env NODE_ENV=production vue-cli-service test",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -22,10 +23,11 @@
     "@vue/cli-service": "^4.5.4",
     "babel-eslint": "^10.1.0",
     "babel-plugin-transform-remove-console": "^6.9.4",
+    "cross-env": "^7.0.3",
     "eslint": "^6.8.0",
     "eslint-plugin-vue": "^6.2.2",
-    "vue-template-compiler": "^2.6.12",
     "less": "^3.12.2",
-    "less-loader": "^6.2.0"
+    "less-loader": "^6.2.0",
+    "vue-template-compiler": "^2.6.12"
   }
 }
