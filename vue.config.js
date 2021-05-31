@@ -22,8 +22,8 @@ module.exports = {
     publicPath: './',
     //打包后输出文件夹名称
     outputDir: process.env.outputDir,
-    //为了兼容ie  在打包的时候编译  当然element-ui是不需要编译的  先写着这里
-    transpileDependencies: ["element-ui"],
+    //为了兼容ie  在打包的时候编译  
+    transpileDependencies: [],
     runtimeCompiler: undefined,
     productionSourceMap: false,
     parallel: undefined,
