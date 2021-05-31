@@ -28,3 +28,6 @@ npm run build
 npm run build:test
 添加环境变量 VUE_APP_CURRENTMODE == 'test'
 ```
+
+### 打包
+https://ganlian1229.github.io/admin/admin%EF%BC%88build%EF%BC%89/
