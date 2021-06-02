@@ -19,10 +19,19 @@ Vue.prototype.$http = { get, post, multiPost };
 import commentFun from './commentFun';
 Vue.prototype.$comment = commentFun;
 
+//全局混入
+import Mixin from "@/mixin/mixin";
+Vue.mixin(Mixin);
+
 //全局过滤器
 import filters from "./filters";
 for (let key in filters) {
   Vue.filter(key, filters[key])
+}
+//全局指令
+import directive from "./directive/index";
+for (let key in directive) {
+  Vue.directive(key, directive[key])
 }
 
 Vue.config.productionTip = false

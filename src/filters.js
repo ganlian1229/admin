@@ -48,7 +48,25 @@ export default {
         .replace(/元$/g, "元整")
         .replace(/角$/g, "角整"); // 替换掉数字里面的零字符，得到结果
     }
-  }
+  },
+  //保留两位小数
+  retainTow(num) {
+    let f = parseFloat(num);
+    if (isNaN(f)) {
+      return false;
+    }
+    let f2 = Math.round(num * 100) / 100;
+    let s = f2.toString();
+    let rs = s.indexOf('.');
+    if (rs < 0) {
+      rs = s.length;
+      s += '.';
+    }
+    while (s.length <= rs + 2) {
+      s += '0';
+    }
+    return s;
+  },
 
 }
 
