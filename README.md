@@ -30,4 +30,4 @@ npm run build:test
 ```
 
 ### 地址
-https://ganlian1229.github.io/admin/admin%EF%BC%88build%EF%BC%89/
+https://ganlian1229.github.io/admin/admin(build)/
