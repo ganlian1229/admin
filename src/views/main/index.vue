@@ -31,6 +31,9 @@ export default {
       dataList: [],
     };
   },
+  beforeCreate() {
+    console.log(this.number);
+  },
   mounted() {
     this.getDataList();
     console.log(this.isMixinData);

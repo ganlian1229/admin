@@ -60,7 +60,7 @@ export default {
     };
   },
   created() {
-    this.showMenu(this.$comment.deepCopy(routerArr));
+    this.showMenu(this.$common.deepCopy(routerArr));
   },
   methods: {
     //显示左侧导航

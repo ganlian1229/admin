@@ -16,15 +16,15 @@ import { get, post, multiPost } from '@/request/request';
 Vue.prototype.$http = { get, post, multiPost };
 
 //公用方法
-import commentFun from './commentFun';
-Vue.prototype.$comment = commentFun;
+import common from '@/common/common';
+Vue.prototype.$common = common;
 
 //全局混入
 import Mixin from "@/mixin/mixin";
 Vue.mixin(Mixin);
 
 //全局过滤器
-import filters from "./filters";
+import filters from "@/filters/filters";
 for (let key in filters) {
   Vue.filter(key, filters[key])
 }

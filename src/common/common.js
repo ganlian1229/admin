@@ -1,5 +1,5 @@
 //公用方法
-export default class CommentFun {
+export default class CommonFun {
     // checkedAll变量传过来  arr：需要全选的数组 addArr：全选之后的数组（做删除或者撤回操作的数组） variable：需要做删除或者撤回的变量
     static checkedAllFun(checkedAll, arr, addArr, variable) {
         console.log(checkedAll)

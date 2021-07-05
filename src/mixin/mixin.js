@@ -4,5 +4,7 @@ export default {
             isMixinData: "mixinData",
         }
     },
-
+    created(){
+        
+    }
 }

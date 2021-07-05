@@ -176,7 +176,7 @@ export default {
     },
     //全选方法
     checkedAllFun() {
-      this.operatingArr = this.$comment.checkedAllFun(
+      this.operatingArr = this.$common.checkedAllFun(
         this.checkedAll,
         this.dataList,
         this.operatingArr,
@@ -185,7 +185,7 @@ export default {
     },
     //单选方法
     checkedFun(item) {
-      this.operatingArr = this.$comment.checkedFun(
+      this.operatingArr = this.$common.checkedFun(
         item,
         this.operatingArr,
         "orderId"

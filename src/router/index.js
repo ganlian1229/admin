@@ -28,7 +28,7 @@ const router = createRouter()
 //     } else {
 //       if (isRefresh) {
 //         //页面刷新走这里重新添加动态路由
-//         let dRouter = commentFun.dynamicAddRouter(
+//         let dRouter = commonFun.dynamicAddRouter(
 //           dynamicRoutes,
 //           JSON.parse(sessionStorage.getItem("authority"))
 //         );
