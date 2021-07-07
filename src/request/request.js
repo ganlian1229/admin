@@ -4,7 +4,8 @@ import router from '@/router/index';
 import { Loading, Message } from "element-ui";
 // import store from "@/store/index.js"
 // 请求头
-Axios.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded; charset=UTF-8";
+// Axios.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded; charset=UTF-8";//FROM
+Axios.defaults.headers.post["Content-Type"] = "application/json;charset=UTF-8";//JSON
 
 if (process.env.VUE_APP_CURRENTMODE == 'production') {
     //运行 npm run build时候

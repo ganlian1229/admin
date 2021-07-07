@@ -3,7 +3,6 @@
     <div class="filter-box">
       <div class="filter-item">
         <el-date-picker
-          size="small"
           v-model="filterTime"
           type="daterange"
           range-separator="至"
@@ -20,7 +19,6 @@
     <div class="filter-box filter-box2">
       <div class="filter-item">
         <el-date-picker
-          size="small"
           v-model="filterTime"
           type="daterange"
           range-separator="至"
@@ -92,8 +90,10 @@
   </div>
 </template>
 <script>
+import pagination from "@/mixin/pagination";
 export default {
   name: "test",
+  mixins: [pagination],
   data() {
     return {
       pickerOptions: {
@@ -127,14 +127,10 @@ export default {
           },
         ],
       }, //时间快捷选择
-
       filterTime: "", //时间筛选
       checkedAll: false, //全选变量
       dataList: [], //数据列表
       operatingArr: [], //需要操作的数组
-      pageNum: 0, //当前页
-      pageSize: 20, //每页数据条数
-      totalCount: 25, //数据总数
     };
   },
   //被缓存的组件生命周期（被缓存的组件显示时执行）
@@ -160,19 +156,6 @@ export default {
       console.log(this.pageNum, this.pageSize);
       // console.log(this.filterTime ? this.filterTime[0] : "");
       // console.log(this.filterTime ? this.filterTime[1] : "");
-    },
-    //每页大小发生变化
-    handleSizeChange(val) {
-      this.pageSize = val;
-      this.pageNum = 0;
-      // console.log(this.pageSize);
-      this.getDataList();
-    },
-    //页数切换
-    handleCurrentChange(val) {
-      this.pageNum = val - 1;
-      // console.log(this.pageNum);
-      this.getDataList();
     },
     //全选方法
     checkedAllFun() {

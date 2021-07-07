@@ -384,42 +384,6 @@ a:focus {
     }
 }
 
-// 状态
-.icon-state {
-    &::before {
-        content: "";
-        display: inline-block;
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        margin-right: 3px;
-    }
-
-    &.icon-success {
-        &::before {
-            background-color: #2eb666;
-        }
-    }
-
-    &.icon-error {
-        &::before {
-            background-color: #ff4a4a;
-        }
-    }
-
-    &.icon-warning {
-        &::before {
-            background-color: #ff8a22;
-        }
-    }
-
-    &.icon-invalid {
-        &::before {
-            background-color: #bbbbbb;
-        }
-    }
-}
-
 .content-list-box {
     flex: auto;
     position: relative;
@@ -497,6 +461,50 @@ a:focus {
             &:nth-child(1) {
                 margin-left: 0;
             }
+        }
+    }
+}
+
+// 状态
+.icon-state {
+    &::before {
+        content: "";
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        margin-right: 3px;
+    }
+
+    &.icon-success {
+        color: #2eb666;
+
+        &::before {
+            background-color: #2eb666;
+        }
+    }
+
+    &.icon-error {
+        color: #ff4a4a;
+
+        &::before {
+            background-color: #ff4a4a;
+        }
+    }
+
+    &.icon-warning {
+        color: #ff8a22;
+
+        &::before {
+            background-color: #ff8a22;
+        }
+    }
+
+    &.icon-invalid {
+        color: #bbbbbb;
+
+        &::before {
+            background-color: #bbbbbb;
         }
     }
 }

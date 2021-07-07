@@ -290,26 +290,6 @@ a:focus {
   color: #3E7CFC;
   cursor: pointer;
 }
-.icon-state::before {
-  content: "";
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  margin-right: 3px;
-}
-.icon-state.icon-success::before {
-  background-color: #2eb666;
-}
-.icon-state.icon-error::before {
-  background-color: #ff4a4a;
-}
-.icon-state.icon-warning::before {
-  background-color: #ff8a22;
-}
-.icon-state.icon-invalid::before {
-  background-color: #bbbbbb;
-}
 .content-list-box {
   flex: auto;
   position: relative;
@@ -365,6 +345,38 @@ a:focus {
 }
 .content-list-box .btn-box .el-button:nth-child(1) {
   margin-left: 0;
+}
+.icon-state::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 3px;
+}
+.icon-state.icon-success {
+  color: #2eb666;
+}
+.icon-state.icon-success::before {
+  background-color: #2eb666;
+}
+.icon-state.icon-error {
+  color: #ff4a4a;
+}
+.icon-state.icon-error::before {
+  background-color: #ff4a4a;
+}
+.icon-state.icon-warning {
+  color: #ff8a22;
+}
+.icon-state.icon-warning::before {
+  background-color: #ff8a22;
+}
+.icon-state.icon-invalid {
+  color: #bbbbbb;
+}
+.icon-state.icon-invalid::before {
+  background-color: #bbbbbb;
 }
 .pagination-box {
   margin-top: 10px;

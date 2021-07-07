@@ -11,20 +11,17 @@ const createRouter = () => new VueRouter({
 
 const router = createRouter()
 
-
-// let isRefresh; //是否是刷新
-// if (sessionStorage.isLogin) {
-//   isRefresh = true;
-// }
+// let isRefresh = sessionStorage.isLogin ? true : false; //是否是刷新
 // // 判断路由是否需要登录
 // router.beforeEach((to, from, next) => {
 //   // console.log(to);
 //   if (to.name == "login") {
+//    //当前页面跳转到登录页
 //     next();
+//     sessionStorage.clear()
 //   } else {
 //     if (to.matched.length == 0 && !isRefresh) {
 //       next("/login");
-//       sessionStorage.clear();
 //     } else {
 //       if (isRefresh) {
 //         //页面刷新走这里重新添加动态路由
@@ -43,10 +40,16 @@ const router = createRouter()
 //     }
 //   }
 // });
+//重写router   push方法（解决跳当前页报错问题）
+const originalPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push (location, onResolve, onReject) {
+  if (onResolve || onReject) return originalPush.call(this, location, onResolve, onReject)
+  return originalPush.call(this, location).catch(err => err)
+}
 
 
 //重置路由
-export function resetRouter() {
+export function resetRouter () {
   const newRouter = createRouter();
   router.matcher = newRouter.matcher;
 }

@@ -9,7 +9,7 @@ import store from './store'
 
 //添加element-ui
 import elementUI from "element-ui";
-Vue.use(elementUI);
+Vue.use(elementUI, { size: 'small' });
 
 //请求封装
 import { get, post, multiPost } from '@/request/request';

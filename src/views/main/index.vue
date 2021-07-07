@@ -3,7 +3,6 @@
     <p class="test">
       数字：<el-input
         v-numbers="3"
-        size="small"
         placeholder="只能输入数字"
         v-model="number"
       ></el-input>
@@ -30,9 +29,6 @@ export default {
       number: "",
       dataList: [],
     };
-  },
-  beforeCreate() {
-    console.log(this.number);
   },
   mounted() {
     this.getDataList();
