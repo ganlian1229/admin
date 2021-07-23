@@ -1,7 +1,7 @@
 //公用方法
 export default class CommonFun {
     // checkedAll变量传过来  arr：需要全选的数组 addArr：全选之后的数组（做删除或者撤回操作的数组） variable：需要做删除或者撤回的变量
-    static checkedAllFun(checkedAll, arr, addArr, variable) {
+    static checkedAllFun (checkedAll, arr, addArr, variable) {
         console.log(checkedAll)
         if (checkedAll) {
             addArr = [];
@@ -18,7 +18,7 @@ export default class CommonFun {
         checkedAll = !checkedAll;
         return addArr;
     }
-    static checkedFun(item, addArr, variable) {
+    static checkedFun (item, addArr, variable) {
         // console.log(item);
         if (item.checked) {
             addArr.push(item[variable]);
@@ -32,16 +32,23 @@ export default class CommonFun {
     }
 
     //对象、数组深拷贝
-    static deepCopy(obj) {
-        var o = obj instanceof Array ? [] : {};
-        for (var k in obj) {
-            var val = obj[k];
-            if (typeof val === "object") {
-                o[k] = this.deepCopy(val);
+    static deepCopy (obj) {
+        var newobj = {}
+        //判断是否为null
+        if (obj === null) return null;
+        for (var key in obj) {
+            //判断数组
+            if ({}.toString.call(obj) === "[object Array]") {
+                var newarr = [];
+                newarr = obj.slice()
+                return newarr
+            }
+            if (typeof obj[key] !== "object") {
+                newobj[key] = obj[key]
             } else {
-                o[k] = val;
+                newobj[key] = this.deepCopy(obj[key])
             }
         }
-        return o;
+        return newobj
     }
 }

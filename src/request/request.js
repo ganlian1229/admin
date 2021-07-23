@@ -9,7 +9,7 @@ Axios.defaults.headers.post["Content-Type"] = "application/json;charset=UTF-8";/
 
 if (process.env.VUE_APP_CURRENTMODE == 'production') {
     //运行 npm run build时候
-    Axios.defaults.baseURL = "https://ty.fengyugo.com/golf/";
+    Axios.defaults.baseURL = "https://ty.fengyugo.com/golf1231232/";
 } else if (process.env.VUE_APP_CURRENTMODE == 'test') {
     //运行 npm run build:test时候
     Axios.defaults.baseURL = "https://ty.fengyugo.com/golf/";
@@ -19,7 +19,7 @@ if (process.env.VUE_APP_CURRENTMODE == 'production') {
 }
 
 //get请求方法
-export function get(url, params) {
+export function get (url, params) {
     return new Promise((resolve, reject) => {
         Axios
             .get(url, {
@@ -34,7 +34,7 @@ export function get(url, params) {
     });
 }
 //post请求方法
-export function post(url, params) {
+export function post (url, params) {
     let loadingInstance = Loading.service({
         lock: true,
         customClass: "loading-box",
@@ -77,7 +77,7 @@ export function post(url, params) {
     });
 }
 //文件上传方法
-export function multiPost(url, FormData) {
+export function multiPost (url, FormData) {
     let loadingInstance = Loading.service({
         lock: true,
         customClass: "loading-box",
