@@ -40,16 +40,25 @@ const router = createRouter()
 //     }
 //   }
 // });
-//重写router   push方法（解决跳当前页报错问题）
-const originalPush = VueRouter.prototype.push
-VueRouter.prototype.push = function push (location, onResolve, onReject) {
-  if (onResolve || onReject) return originalPush.call(this, location, onResolve, onReject)
-  return originalPush.call(this, location).catch(err => err)
+// 保存原来的push函数
+const routerPush = VueRouter.prototype.push
+// 重写push函数
+VueRouter.prototype.push = function push(location) {
+  // 这个if语句在跳转相同路径的时候，在路径末尾添加新参数（一些随机数字）
+  // 用来触发watch
+  if (typeof (location) == "string") {
+    var Separator = "&";
+    if (location.indexOf('?') == -1) { Separator = '?'; }
+    location = location + Separator + "random=" + Math.random();
+  }
+  // 这个语句用来解决报错
+  // 调用原来的push函数，并捕获异常
+  return routerPush.call(this, location).catch(error => error)
 }
 
 
 //重置路由
-export function resetRouter () {
+export function resetRouter() {
   const newRouter = createRouter();
   router.matcher = newRouter.matcher;
 }
