@@ -15,11 +15,11 @@ if (process.env.VUE_APP_CURRENTMODE == 'production') {
     Axios.defaults.baseURL = "https://ty.fengyugo.com/golf/";
 } else {
     //本地运行的时候（需要跨域）
-    Axios.defaults.baseURL = "/request";
+    Axios.defaults.baseURL = "https://192.168.0.125:8083";
 }
 
 //get请求方法
-export function get(url, params) {
+export function get (url, params) {
     return new Promise((resolve, reject) => {
         Axios
             .get(url, {
@@ -34,7 +34,7 @@ export function get(url, params) {
     });
 }
 //post请求方法
-export function post(url, params) {
+export function post (url, params) {
     let loadingInstance = Loading.service({
         lock: true,
         customClass: "loading-box",
@@ -77,7 +77,7 @@ export function post(url, params) {
     });
 }
 //文件上传方法
-export function multiPost(url, FormData) {
+export function multiPost (url, FormData) {
     let loadingInstance = Loading.service({
         lock: true,
         customClass: "loading-box",

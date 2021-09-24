@@ -8,6 +8,7 @@ module.exports = {
             //配置跨域
             '/request': {
                 target: "https://ty.fengyugo.com/golf/",
+                // target: "http://192.168.0.125:8083",
                 ws: true,
                 changOrigin: true,
                 pathRewrite: {
