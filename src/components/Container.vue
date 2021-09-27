@@ -1,8 +1,8 @@
 <template>
   <el-container class="container-content">
-    <topNavBar></topNavBar>
-    <leftSidebar></leftSidebar>
-    <el-container class="main-container">
+    <topNavBar v-model="isActive"></topNavBar>
+    <leftSidebar v-model="isActive"></leftSidebar>
+    <el-container class="main-container" :class="isActive ? 'active' : ''">
       <div style="width: 100%">
         <div class="body-content">
           <keep-alive :include="keepAliveArr">
@@ -23,16 +23,29 @@ export default {
   },
   data() {
     return {
-      keepAliveArr: ["advertisingCon"], //需要缓存的路由  值是组件的name
+      keepAliveArr: ["advertising"], //需要缓存的路由  值是组件的name
+      isActive: false, //是否收起菜单 true 收起
     };
   },
   created() {},
-  mounted() {},
-  methods: {},
+  mounted() {
+    this.windowResize();
+    window.addEventListener("resize", this.windowResize, false);
+  },
+  methods: {
+    windowResize() {
+      let clientWidth = document.body.clientWidth;
+      if (clientWidth <= 1450) {
+        this.isActive = true;
+      } else {
+        this.isActive = false;
+      }
+    },
+  },
 };
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 @bgimg: "~@/assets/image/";
 .container-content {
   .main-container {
@@ -40,12 +53,15 @@ export default {
     position: relative;
     min-height: 100%;
     transition: margin-left 0.28s;
-    padding-top: 85px;
+    padding-top: 60px;
     min-width: 1200px;
+    &.active {
+      margin-left: 54px;
+    }
     .body-content {
       padding: 20px;
       position: relative;
-      min-height: calc(100vh - 85px);
+      min-height: calc(100vh - 60px);
       background: #f2f4f7;
     }
   }

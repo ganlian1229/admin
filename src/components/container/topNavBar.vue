@@ -1,16 +1,41 @@
 <template>
-  <div class="top-navbar">
-    <span></span>
-    <el-button type="text" @click="logout()">退出登录</el-button>
+  <div class="top-navbar" :class="value ? 'act' : ''">
+    <div class="navbar-left">
+      <div class="hamburger-box" @click="switchActFun">
+        <span
+          class="icon"
+          :class="value ? 'el-icon-s-unfold' : 'el-icon-s-fold'"
+        ></span>
+      </div>
+    </div>
+    <div class="navbar-right">
+      <el-button type="text" @click="logout()">退出登录</el-button>
+    </div>
   </div>
 </template>
 <script>
 import { resetRouter } from "@/router/index.js";
 export default {
+  props: {
+    //是否收起菜单 true 收起
+    value: {
+      type: Boolean,
+      default: () => false,
+    },
+  },
+  model: {
+    value: "",
+    event: "valueCahnge",
+  },
   data() {
     return {};
   },
   methods: {
+    //切换左侧收起/展开
+    switchActFun() {
+      // console.log(this.value);
+      this.$emit("valueCahnge", !this.value);
+    },
     logout() {
       this.$confirm("是否确认退出登录?", "提示", {
         confirmButtonText: "确定",
@@ -36,8 +61,7 @@ export default {
   top: 0;
   left: 0;
   width: 100%;
-  height: 85px;
-  // overflow: hidden;
+  height: 60px;
   background: #fff;
   // box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
   border-bottom: 1px solid #eeeeee;
@@ -45,78 +69,30 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding-right: 80px;
-  padding-left: 50px;
+  padding-left: 210px;
   z-index: 1002;
-
+  transition: all 0.28s;
+  &.act {
+    padding-left: 54px;
+  }
   .navbar-left {
-    width: 370px;
-    height: 53px;
+    height: 100%;
+    line-height: 60px;
+    // width: 370px;
+    .hamburger-box {
+      height: 100%;
+      padding: 0 10px;
+      cursor: pointer;
+      .icon {
+        font-size: 24px;
+      }
+    }
   }
   .navbar-right {
     display: flex;
     cursor: pointer;
     padding-right: 40px;
     position: relative;
-    &::after {
-      content: "";
-      position: absolute;
-      width: 0;
-      height: 0;
-      border-right: 10px solid transparent;
-      border-left: 10px solid transparent;
-      border-top: 10px solid #8e8e8e;
-      top: 50%;
-      right: 0;
-      transform: translateY(-50%);
-    }
-    .user-tx {
-      width: 35px;
-      height: 35px;
-      border-radius: 50%;
-      overflow: hidden;
-      margin-right: 20px;
-      img {
-        display: block;
-        width: 100%;
-      }
-    }
-    .user-name {
-      font-size: 22px;
-      color: #8e8e8e;
-    }
-    .user-fun {
-      position: absolute;
-      top: 100%;
-      width: 100%;
-      left: 0;
-      top: 120%;
-      max-height: 0;
-      overflow: hidden;
-      transition: all 0.5s;
-      background: #fff;
-      border-radius: 10px;
-
-      .fun-item {
-        padding: 3px 0;
-        font-size: 22px;
-        color: #8e8e8e;
-        text-align: center;
-        margin-top: 10px;
-        &:nth-child(1) {
-          margin-top: 0;
-        }
-        &:hover {
-          background: #f8f9fb;
-        }
-      }
-    }
-    &.act {
-      .user-fun {
-        padding: 15px 0;
-        max-height: 300px;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-      }
-    }
   }
 }
 </style>

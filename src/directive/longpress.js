@@ -1,8 +1,17 @@
-// 长按事件
+// 长按事件 请不要与点击事件一起使用
 let longpress = {
   bind: function (el, binding, vNode) {
     if (typeof binding.value !== 'function') {
       throw 'callback must be a function'
+    }
+    console.log(binding.rawName)
+    let time = 2000;
+    let rawNameArr = binding.rawName.split(".");
+    console.log(rawNameArr)
+    if (rawNameArr.length > 1) {
+      let a = Number(rawNameArr[1] + "000");
+      console.log(a)
+      time = a
     }
     // 定义变量
     let pressTimer = null
@@ -14,7 +23,7 @@ let longpress = {
       if (pressTimer === null) {
         pressTimer = setTimeout(() => {
           handler()
-        }, 2000)
+        }, time)
       }
     }
     // 取消计时器

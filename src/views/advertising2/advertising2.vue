@@ -110,24 +110,23 @@
       <span class="active-num" v-show="operatingArr.length != 0">
         当前选中{{ operatingArr.length }}条
       </span>
-      <el-pagination
-        background
-        @size-change="handleSizeChange"
-        @current-change="handleCurrentChange"
-        :current-page="pageNum + 1"
-        :page-sizes="[20, 100, 500, 1000]"
-        :page-size="20"
-        layout="total,sizes, prev, pager, next, jumper"
-        :total="totalCount"
-      ></el-pagination>
+      <pagination
+        :getDataList="getDataList"
+        :pageNum.sync="pageNum"
+        :pageSize.sync="pageSize"
+        :totalCount.sync="totalCount"
+      ></pagination>
     </div>
   </div>
 </template>
 <script>
-import pagination from "@/mixin/pagination";
+import pagination from "@/components/pagination/pagination";
+import paginationData from "@/mixin/paginationData";
 export default {
-  name: "test2",
-  mixins: [pagination],
+  components: {
+    pagination,
+  },
+  mixins: [paginationData],
   data() {
     return {
       pickerOptions: {
@@ -161,7 +160,6 @@ export default {
           },
         ],
       }, //时间快捷选择
-
       filterTime: "", //时间筛选
       checkedAll: false, //全选变量
       dataList: [], //数据列表
@@ -186,7 +184,7 @@ export default {
     },
     //筛选方法
     filterFun() {
-      this.pageNum = 0;
+      this.pageNum = 1;
       this.getDataList();
     },
     //获取数据列表

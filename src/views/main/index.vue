@@ -29,7 +29,7 @@
       </div>
       <div class="box" v-drag="dragFun"></div>
       <div class="box-resize" v-resize="boxResizeFun"></div>
-      <el-button v-longpress="longPressFun">长按2秒</el-button>
+      <el-button v-longpress.3="longPressFun">长按2秒</el-button>
       <testCom></testCom>
     </div>
     <div class="right">
@@ -88,7 +88,7 @@ export default {
 .main-index {
   background-color: transparent !important;
   display: flex;
-  .right{
+  .right {
     margin-left: 50px;
   }
   .box {

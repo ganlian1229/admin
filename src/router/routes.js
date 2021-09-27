@@ -12,10 +12,11 @@ export default [
         path: "/main",
         component: () => import("../components/Container.vue"),
         meta: {
+            icon: "el-icon-s-platform",
             show: true,//是否显示在右侧
             title: "首页",//显示在右侧的文字（给自己的标识）
             isOne: true,//是否只有一个子集
-            onePath: "index"//仅有的一个子集path是什么
+            onePath: "index",//仅有的一个子集path是什么
         },
         name: "main",
         children: [{
@@ -32,6 +33,7 @@ export default [
         path: "/advertising",
         component: () => import("../components/Container.vue"),
         meta: {
+            icon: "el-icon-s-platform",
             show: true,
             title: "广告位",
             isOne: true,
@@ -52,6 +54,7 @@ export default [
         path: "/advertising2",
         component: () => import("../components/Container.vue"),
         meta: {
+            icon: "el-icon-s-platform",
             show: true,
             title: "广告位2",
             isOne: true,
@@ -71,6 +74,7 @@ export default [
         path: "/articleAdmin",
         component: () => import("../components/Container.vue"),
         meta: {
+            icon: "el-icon-s-platform",
             show: true,
             title: "文章管理",
             isOne: false,

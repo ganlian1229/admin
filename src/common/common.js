@@ -30,7 +30,6 @@ export default class CommonFun {
         }
         return addArr;
     }
-
     //对象、数组深拷贝
     static deepCopy (source) {
         if (!source) return
@@ -53,15 +52,6 @@ export default class CommonFun {
             target = source
         }
         return target
-    }
-    //增强arr indexOf方法
-    static increaseArrIndexOf (arr, variable, value) {
-        for (let i = 0; i < arr.length; i++) {
-            if (arr[i][variable] == value) {
-                return i;
-            }
-        }
-        return -1;
     }
     //数组去重方法
     static delArr (arr) {

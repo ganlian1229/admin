@@ -1,15 +1,18 @@
 <template>
-  <div class="sidebar-container">
+  <div class="sidebar-container" :class="value ? 'hideSidebar' : ''">
+    <div class="logo-box">
+      logo
+    </div>
     <el-scrollbar wrap-class="scrollbar-wrapper">
       <el-menu
         :default-active="$route.path"
-        :collapse="isActive"
+        :collapse="value"
         :collapse-transition="false"
         :default-openeds="openedsArr"
         mode="vertical"
-        background-color="#fff"
-        text-color="#bbbbbb"
-        active-text-color="#333333"
+        background-color="#212740"
+        text-color="#555e86"
+        active-text-color="#555e86"
       >
         <template v-for="(item, index) in menus" :index="index">
           <!-- 多个子集 -->
@@ -52,16 +55,27 @@
 <script>
 import routerArr from "@/router/routes";
 export default {
+  props: {
+    //是否收起菜单 true 收起
+    value: {
+      type: Boolean,
+      default: () => false,
+    },
+  },
+  model: {
+    value: "",
+    event: "valueCahnge",
+  },
   data() {
     return {
       menus: [], //左侧导航列表
       openedsArr: [], //需要展开的path
-      isActive: false, //是否收起菜单 true 收起
     };
   },
   created() {
     this.showMenu(this.$common.deepCopy(routerArr));
   },
+  mounted() {},
   methods: {
     //显示左侧导航
     showMenu(arr) {
@@ -93,20 +107,28 @@ export default {
 <style lang="less" scoped>
 .sidebar-container {
   width: 210px;
-  background-color: #fff;
+  background-color: #212740;
   height: 100vh;
   position: fixed;
   font-size: 0;
   top: 0;
   bottom: 0;
   left: 0;
-  z-index: 1001;
+  z-index: 1005;
   overflow: hidden;
   transition: width 0.28s;
-  padding-top: 85px;
+  // padding-top: 85px;
   &.hideSidebar {
     width: 54px !important;
   }
+  .logo-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    width: 100%;
+  }
+
   /deep/ .el-scrollbar {
     height: 100%;
     .scrollbar-wrapper {
@@ -117,29 +139,49 @@ export default {
     border: none;
     height: 100%;
     width: 100% !important;
+    &.el-menu--collapse {
+      .el-menu-item {
+        & > div {
+          padding: 0 15px !important;
+        }
+      }
+      .el-submenu__title {
+        padding: 0 15px !important;
+      }
+    }
   }
   /deep/.el-submenu .el-menu-item,
   .nest-menu .el-submenu > .el-submenu__title {
     min-width: 210px !important;
-    background-color: #fff !important;
-    padding-left: 56px !important;
+    background-color: #212740 !important;
+    // padding-left: 56px !important;
   }
   /deep/ .el-submenu__title {
-    font-size: 18px;
+    font-size: 16px;
   }
   /deep/ .el-menu-item {
-    font-size: 18px;
-  }
-  .router-link-exact-active .el-menu-item {
-    color: rgb(51, 51, 51) !important;
+    font-size: 16px;
   }
   /deep/ .el-menu .el-submenu .el-menu-item-group__title {
     display: none;
   }
+  .nav-icon {
+    font-size: 24px;
+    color: #555e86;
+    margin-right: 5px;
+  }
+  .router-link-exact-active .el-menu-item {
+    color: #fff !important;
+    background-color: #7184f7 !important;
+    .nav-icon {
+      color: #fff !important;
+    }
+  }
+
   .router-link-exact-active,
   .is-active {
     .el-submenu__title {
-      color: #333333 !important;
+      color: #fff !important;
       // font-weight: bold;
     }
   }

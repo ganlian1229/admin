@@ -2,7 +2,6 @@
  * 全局过滤器
  */
 export default {
-
   //数字金额转化为大写
   smallToBig(n) {
     let unit = "仟佰拾亿仟佰拾万仟佰拾元角分",
