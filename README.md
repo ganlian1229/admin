@@ -20,7 +20,7 @@ npm run serve
 ```
 
 ### 打包
-
+注：打包删除了console.log 不想删除可以在babel.config.js中自行修改
 ```
 npm run build
 添加环境变量 VUE_APP_CURRENTMODE == 'production'
