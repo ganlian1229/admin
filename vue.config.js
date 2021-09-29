@@ -7,7 +7,7 @@ module.exports = {
         proxy: {
             //配置跨域
             '/request': {
-                target: "https://ty.fengyugo.com/golf/",
+                target: "https://baby.yyooyi.com/api/mall-admin",
                 // target: "http://192.168.0.125:8083",
                 ws: true,
                 changOrigin: true,
