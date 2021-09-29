@@ -64,7 +64,7 @@ export default {
   },
   model: {
     value: "",
-    event: "valueCahnge",
+    event: "valueChange",
   },
   data() {
     return {
@@ -80,12 +80,12 @@ export default {
     //显示左侧导航
     showMenu(arr) {
       var menus = [];
-      arr.map((val) => {
+      arr.forEach((val) => {
         if (val.meta) {
           if (val.meta.show) {
             if (val.children.length) {
               var child = [];
-              val.children.map((cval) => {
+              val.children.forEach((cval) => {
                 if (cval.meta.show) {
                   child.push(cval);
                 }

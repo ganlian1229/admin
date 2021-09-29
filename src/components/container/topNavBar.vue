@@ -25,7 +25,7 @@ export default {
   },
   model: {
     value: "",
-    event: "valueCahnge",
+    event: "valueChange",
   },
   data() {
     return {};
@@ -34,7 +34,7 @@ export default {
     //切换左侧收起/展开
     switchActFun() {
       // console.log(this.value);
-      this.$emit("valueCahnge", !this.value);
+      this.$emit("valueChange", !this.value);
     },
     logout() {
       this.$confirm("是否确认退出登录?", "提示", {
