@@ -1,15 +1,30 @@
 <template>
   <div class="article-admin">
     <h1>近期优惠</h1>
+    <test></test>
   </div>
 </template>
 <script>
+import test from "./components/test.vue";
 export default {
+  components: {
+    test,
+  },
   data() {
     return {};
   },
-  created() {},
-  mounted() {},
+  beforeCreate() {
+    console.log("beforeCreate");
+  },
+  created() {
+    console.log("created");
+  },
+  beforeMount() {
+    console.log("beforeMount");
+  },
+  mounted() {
+    console.log("mounted");
+  },
   methods: {},
   computed: {},
 };
