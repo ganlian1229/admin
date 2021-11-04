@@ -1,60 +1,30 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-    <div class="fileBox" ref="fileBox">
-      <div
-        class="fileDiv"
-        :class="item.isAct ? 'seled' : ''"
-        v-for="(item, index) in fileList"
-        :key="index"
-      >
-        {{ item.text }}
-      </div>
-    </div>
+  <div ref="selectParentDom">
+    <slot :valueList="value"></slot>
   </div>
 </template>
 <script>
 export default {
+  name: 'mouseSelect',
+  props: {
+    //是否热更新
+    isHot: {
+      type: Boolean,
+      default: () => false,
+    },
+    //热更新一定要把列表传过来
+    value: {
+      type: Array,
+      default: () => [],
+    },
+  },
+  model: {
+    prop: 'value',
+    // 随便命名事件，对应下面$emit即可
+    event: 'valueChange',
+  },
   data() {
     return {
-      fileList: [
-        {
-          isAct: false,
-          text: 'file1',
-        },
-        {
-          isAct: false,
-          text: 'file2',
-        },
-        {
-          isAct: false,
-          text: 'file3',
-        },
-        {
-          isAct: false,
-          text: 'file4',
-        },
-        {
-          isAct: false,
-          text: 'file5',
-        },
-        {
-          isAct: false,
-          text: 'file6',
-        },
-        {
-          isAct: false,
-          text: 'file7',
-        },
-        {
-          isAct: false,
-          text: 'file8',
-        },
-        {
-          isAct: false,
-          text: 'file9',
-        },
-      ],
       mouseObj: {
         isPress: false, //鼠标是否按下
         selDiv: null, //显示的盒子
@@ -62,10 +32,11 @@ export default {
         startY: null,
         childrens: [],
       },
+      activeArr: [], //选中的索引列表
+      cancelArr: [], //取消的索引列表
     }
   },
   mounted() {
-    // let element = document.getElementById('fileBox')
     document.addEventListener('mousedown', this.boxMousedown, false)
     document.addEventListener('mousemove', this.boxMousemove, false)
     document.addEventListener('mouseup', this.boxMouseup, false)
@@ -76,12 +47,37 @@ export default {
     })
   },
   methods: {
+    //获取元素位置
+    getElementInfo(element, variable) {
+      let actual = element[variable] //这是获取元素距父元素的距离
+      let current = element.offsetParent //这是获取父元素
+      while (current !== null) {
+        //当它上面有元素时就继续执行
+        actual += current[variable] //这是获取父元素距它的父元素的距离累加起来
+        current = current.offsetParent //继续找父元素
+      }
+      return actual
+    },
+    //获取滚动条距离 scrollX 横向滚动条距离最左边的距离  scrollY 纵向滚动条距离最上边的距离
+    getScrollOffset() {
+      if (0 && window.pageXOffset) {
+        return {
+          scrollX: window.pageXOffset,
+          scrollY: window.pageYOffset,
+        }
+      } else {
+        return {
+          scrollX:
+            document.body.scrollLeft + document.documentElement.scrollLeft,
+          scrollY: document.body.scrollTop + document.documentElement.scrollTop,
+        }
+      }
+    },
     //鼠标按下
     boxMousedown(event) {
-      this.clearEventBubble(event)
-      let element = this.$refs['fileBox']
-      let elementOffsetLeft = element.offsetLeft,
-        elementOffsetTop = element.offsetTop
+      let element = this.$refs['selectParentDom']
+      let elementOffsetLeft = this.getElementInfo(element, 'offsetLeft'),
+        elementOffsetTop = this.getElementInfo(element, 'offsetTop')
       let elementOffsetWidth = element.offsetWidth,
         elementOffsetHeight = element.offsetHeight
       // console.log('elementOffsetLeft', elementOffsetLeft)
@@ -90,7 +86,6 @@ export default {
       // console.log('elementOffsetHeight', elementOffsetHeight)
       // console.log('clientX', event.clientX)
       // console.log('clientY', event.clientY)
-      console.log('按下！')
       let clientX = event.clientX
       let clientY = event.clientY
       if (
@@ -99,6 +94,8 @@ export default {
         clientY > elementOffsetTop &&
         clientY < elementOffsetTop + elementOffsetHeight
       ) {
+        // console.log('按下！')
+        this.clearEventBubble(event)
         //点击在盒子里面
         this.mouseObj.isPress = true
         this.mouseObj.startX = clientX
@@ -108,10 +105,15 @@ export default {
           'position:absolute;width:0px;height:0px;font-size:0px;margin:0px;padding:0px;border:1px dashed #0099FF;background-color:#C3D5ED;z-index:1000;filter:alpha(opacity:60);opacity:0.6;display:none;'
         this.mouseObj.selDiv.id = 'selectDiv'
         document.body.appendChild(this.mouseObj.selDiv)
-        this.mouseObj.selDiv.style.left = this.mouseObj.startX + 'px'
-        this.mouseObj.selDiv.style.top = this.mouseObj.startY + 'px'
 
-        let childrens = element.getElementsByTagName('div')
+        let { scrollX, scrollY } = this.getScrollOffset()
+        this.mouseObj.selDiv.style.left =
+          this.mouseObj.startX + Number(scrollX.toFixed(2)) + 'px'
+        this.mouseObj.selDiv.style.top =
+          this.mouseObj.startY + Number(scrollY.toFixed(2)) + 'px'
+
+        let childrens = element.childNodes
+        // console.log('childrens', childrens)
         this.mouseObj.childrens = childrens
       } else {
         this.mouseObj.isPress = false
@@ -124,11 +126,16 @@ export default {
       if (this.mouseObj.selDiv.style.display == 'none') {
         this.mouseObj.selDiv.style.display = ''
       }
-      console.log('移动中...')
+      this.activeArr = []
+      this.cancelArr = []
+      // console.log('移动中...')
       let x = event.clientX
       let y = event.clientY
-      this.mouseObj.selDiv.style.left = Math.min(x, this.mouseObj.startX) + 'px'
-      this.mouseObj.selDiv.style.top = Math.min(y, this.mouseObj.startY) + 'px'
+      let { scrollX, scrollY } = this.getScrollOffset()
+      this.mouseObj.selDiv.style.left =
+        Math.min(x, this.mouseObj.startX) + Number(scrollX.toFixed(2)) + 'px'
+      this.mouseObj.selDiv.style.top =
+        Math.min(y, this.mouseObj.startY) + Number(scrollY.toFixed(2)) + 'px'
       this.mouseObj.selDiv.style.width =
         Math.abs(x - this.mouseObj.startX) + 'px'
       this.mouseObj.selDiv.style.height =
@@ -141,27 +148,39 @@ export default {
         _h = this.mouseObj.selDiv.offsetHeight
       let selList = this.mouseObj.childrens
       for (let i = 0; i < selList.length; i++) {
-        let sl = selList[i].offsetWidth + selList[i].offsetLeft
-        let st = selList[i].offsetHeight + selList[i].offsetTop
+        let selListOffsetLeft = this.getElementInfo(selList[i], 'offsetLeft')
+        let selListOffsetTop = this.getElementInfo(selList[i], 'offsetTop')
+        let sl = selList[i].offsetWidth + selListOffsetLeft
+        let st = selList[i].offsetHeight + selListOffsetTop
         if (
           sl > _l &&
           st > _t &&
-          selList[i].offsetLeft < _l + _w &&
-          selList[i].offsetTop < _t + _h
+          selListOffsetLeft < _l + _w &&
+          selListOffsetTop < _t + _h
         ) {
-          if (!this.fileList[i].isAct) {
-            this.fileList[i].isAct = true
+          //选中了
+          this.activeArr.push(i)
+          if (this.isHot) {
+            if (!this.value[i].isAct) {
+              this.value[i].isAct = true
+            }
+            this.$emit('valueChange', this.value)
           }
         } else {
-          if (this.fileList[i].isAct) {
-            this.fileList[i].isAct = false
+          //取消选中
+          this.cancelArr.push(i)
+          if (this.isHot) {
+            if (this.value[i].isAct) {
+              this.value[i].isAct = false
+            }
+            this.$emit('valueChange', this.value)
           }
         }
       }
     },
     //鼠标抬起
     boxMouseup() {
-      console.log('抬起！')
+      // console.log('抬起！')
       this.mouseObj.isPress = false
       this.mouseObj.startX = null
       this.mouseObj.startY = null
@@ -169,20 +188,12 @@ export default {
       if (this.mouseObj.selDiv) {
         document.body.removeChild(this.mouseObj.selDiv)
         this.mouseObj.selDiv = null
-        this.selectSuccess()
+        // this.selectSuccess()
+        this.$emit('sueecss', this.activeArr, this.cancelArr)
       }
       // console.log(this.mouseObj)
     },
-    //选着成功！
-    selectSuccess() {
-      let selectArr = []
-      this.fileList.forEach((item) => {
-        if (item.isAct) {
-          selectArr.push(item)
-        }
-      })
-      console.log('当前选择为', selectArr)
-    },
+    //阻止默认事件
     clearEventBubble(evt) {
       if (evt.stopPropagation) {
         evt.stopPropagation()
@@ -198,25 +209,3 @@ export default {
   },
 }
 </script>
-<style scoped>
-.fileBox {
-  display: flex;
-  flex-wrap: wrap;
-  border: 1px solid red;
-}
-.fileDiv {
-  width: 100px;
-  height: 100px;
-  text-align: center;
-  line-height: 100px;
-  font-size: 12px;
-  border: 1px solid #ccc;
-  margin-right: 10px;
-  margin-bottom: 10px;
-}
-
-.seled {
-  border: 1px solid red;
-  background-color: #d6dff7;
-}
-</style>

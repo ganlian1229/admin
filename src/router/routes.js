@@ -71,6 +71,26 @@ export default [
         }],
     },
     {
+        path: "/advertising3",
+        component: () => import("../components/Container.vue"),
+        meta: {
+            icon: "el-icon-s-platform",
+            show: true,
+            title: "广告位3",
+            isOne: true,
+            onePath: "advertising3"
+        },
+        children: [{
+            path: "advertising3",
+            name: "advertisingCon3",
+            meta: {
+                show: true,
+                title: "广告位3"
+            },
+            component: () => import("../views/advertising3/advertising3.vue"),
+        }],
+    },
+    {
         path: "/articleAdmin",
         component: () => import("../components/Container.vue"),
         meta: {
