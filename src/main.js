@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import App from './App.vue';
-//添加全局组件（动态）
+//添加全局组件（动态）记住文件名称不能重复
 import "@/componentsGlobal/index.js";
 
 //路由

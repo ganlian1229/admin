@@ -35,6 +35,7 @@
     <div class="right">
       <p></p>
       <globalCom></globalCom>
+      <testGlobalCom></testGlobalCom>
     </div>
   </div>
 </template>
