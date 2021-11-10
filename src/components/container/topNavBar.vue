@@ -24,7 +24,7 @@ export default {
     },
   },
   model: {
-    value: "",
+    value: "value",
     event: "valueChange",
   },
   data() {

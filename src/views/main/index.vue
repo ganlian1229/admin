@@ -34,55 +34,56 @@
     </div>
     <div class="right">
       <p></p>
+      <globalCom></globalCom>
     </div>
   </div>
 </template>
 <script>
-import { mapState } from "vuex";
-import testCom from "@/views/main/components/testCom";
+import { mapState } from 'vuex'
+import testCom from '@/views/main/components/testCom'
 export default {
   components: {
     testCom,
   },
   computed: {
-    ...mapState(["userInfo"]),
+    ...mapState(['userInfo']),
   },
   data() {
     return {
-      number: "",
+      number: '',
       dataList: [],
-    };
+    }
   },
   mounted() {
-    this.getDataList();
-    console.log(this.isMixinData);
+    this.getDataList()
+    console.log(this.isMixinData)
   },
   methods: {
     longPressFun() {
-      console.log("长按事件触发！");
+      console.log('长按事件触发！')
     },
     boxResizeFun() {
-      console.log("box-resize大小改变了！");
+      console.log('box-resize大小改变了！')
     },
     moreFun() {
-      this.getDataList();
+      this.getDataList()
     },
     dragFun(event) {
-      console.log(event);
+      console.log(event)
     },
     getDataList() {
       for (let i = 0; i < 20; i++) {
         this.dataList.push({
           index: i,
-        });
+        })
       }
     },
     filtersFun() {
-      let text = this.$options.filters["smallToBig"]("150");
-      console.log(text);
+      let text = this.$options.filters['smallToBig']('150')
+      console.log(text)
     },
   },
-};
+}
 </script>
 <style lang="less">
 .main-index {

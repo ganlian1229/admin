@@ -70,7 +70,7 @@ function closeLoading () {
 
 
 //get请求方法
-export function get (url, params) {
+export function get (url, params = {}) {
     //是否隐藏loading
     params.hideLoading ? delete params.hideLoading : addLoading();
     return new Promise((resolve, reject) => {
@@ -101,7 +101,7 @@ export function get (url, params) {
     });
 }
 //post请求方法
-export function post (url, params) {
+export function post (url, params = {}) {
     //是否隐藏loading
     params.hideLoading ? delete params.hideLoading : addLoading();
 

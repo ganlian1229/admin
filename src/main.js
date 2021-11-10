@@ -1,11 +1,13 @@
-import Vue from 'vue'
-import App from './App.vue'
+import Vue from 'vue';
+import App from './App.vue';
+//添加全局组件（动态）
+import "@/componentsGlobal/index.js";
 
 //路由
-import router from './router'
+import router from './router';
 
 //vuex
-import store from './store'
+import store from './store';
 
 //添加element-ui
 import elementUI from "element-ui";
