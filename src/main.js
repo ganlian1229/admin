@@ -35,6 +35,9 @@ import directive from "./directive/index";
 for (let key in directive) {
   Vue.directive(key, directive[key])
 }
+//可使用vue3语法（兼容vue2语法）
+import compositionApi from "@vue/composition-api"
+Vue.use(compositionApi)
 
 Vue.config.productionTip = false
 

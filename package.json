@@ -21,6 +21,7 @@
     "@vue/cli-plugin-eslint": "^4.5.13",
     "@vue/cli-plugin-vuex": "^4.5.13",
     "@vue/cli-service": "^4.5.13",
+    "@vue/composition-api": "^1.4.0",
     "babel-eslint": "^10.1.0",
     "babel-plugin-transform-remove-console": "^6.9.4",
     "cross-env": "^7.0.3",
