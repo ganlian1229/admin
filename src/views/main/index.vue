@@ -2,18 +2,9 @@
   <div class="main-index">
     <div class="left">
       <p class="test">
-        数字：<el-input
-          v-numbers="3"
-          placeholder="只能输入数字"
-          v-model="number"
-        ></el-input>
+        数字：<el-input v-numbers="3" placeholder="只能输入数字" v-model="number"></el-input>
       </p>
-      <p
-        v-copy="
-          '使用全局过滤器转化的大写金额：' +
-            $options.filters['smallToBig'](number)
-        "
-      >
+      <p v-copy="'使用全局过滤器转化的大写金额：' + $options.filters['smallToBig'](number)">
         使用全局过滤器转化的大写金额：
         <span>
           {{ number | smallToBig }}
@@ -27,7 +18,9 @@
       <div class="load-more-box" v-loadmore="moreFun">
         <p v-for="(item, index) in dataList" :key="index">{{ index }}</p>
       </div>
-      <div class="box" v-drag="dragFun"></div>
+      <div class="box">
+        <h1 v-drag.parent="dragFun">1111</h1>
+      </div>
       <div class="box-resize" v-resize="boxResizeFun"></div>
       <el-button v-longpress.3="longPressFun">长按2秒</el-button>
       <testCom></testCom>
@@ -40,51 +33,51 @@
   </div>
 </template>
 <script>
-import { mapState } from 'vuex'
-import testCom from '@/views/main/components/testCom'
+import { mapState } from "vuex";
+import testCom from "@/views/main/components/testCom";
 export default {
   components: {
     testCom,
   },
   computed: {
-    ...mapState(['userInfo']),
+    ...mapState(["userInfo"]),
   },
   data() {
     return {
-      number: '',
+      number: "",
       dataList: [],
-    }
+    };
   },
   mounted() {
-    this.getDataList()
-    console.log(this.isMixinData)
+    this.getDataList();
+    console.log(this.isMixinData);
   },
   methods: {
     longPressFun() {
-      console.log('长按事件触发！')
+      console.log("长按事件触发！");
     },
     boxResizeFun() {
-      console.log('box-resize大小改变了！')
+      console.log("box-resize大小改变了！");
     },
     moreFun() {
-      this.getDataList()
+      this.getDataList();
     },
     dragFun(event) {
-      console.log(event)
+      console.log(event);
     },
     getDataList() {
       for (let i = 0; i < 20; i++) {
         this.dataList.push({
           index: i,
-        })
+        });
       }
     },
     filtersFun() {
-      let text = this.$options.filters['smallToBig']('150')
-      console.log(text)
+      let text = this.$options.filters["smallToBig"]("150");
+      console.log(text);
     },
   },
-}
+};
 </script>
 <style lang="less">
 .main-index {

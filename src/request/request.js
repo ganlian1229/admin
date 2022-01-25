@@ -80,19 +80,20 @@ export function get (url, params = {}) {
             })
             .then(res => {
                 closeLoading()
-                if (res.data.code == 200) {
-                    resolve(res.data);
-                } else if (res.data.code == 0) {
-                    //code等于0的公共操作（这里是跳转到登录）
-                    Message.error(res.data.msg);
-                    router.replace({
-                        name: "login"
-                    })
-                    sessionStorage.clear();
-                } else {
-                    reject(res.data);
-                    Message.error(res.data.msg);
-                }
+                resolve(res);
+                // if (res.data.code == 200) {
+                //     resolve(res.data);
+                // } else if (res.data.code == 0) {
+                //     //code等于0的公共操作（这里是跳转到登录）
+                //     Message.error(res.data.msg);
+                //     router.replace({
+                //         name: "login"
+                //     })
+                //     sessionStorage.clear();
+                // } else {
+                //     reject(res.data);
+                //     Message.error(res.data.msg);
+                // }
             })
             .catch(err => {
                 closeLoading()

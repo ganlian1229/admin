@@ -36,10 +36,7 @@
     <div class="content-scroll-box">
       <el-row v-if="dataList.length != 0">
         <el-col :span="1">
-          <el-checkbox
-            v-model="checkedAll"
-            @change="checkedAllFun"
-          ></el-checkbox>
+          <el-checkbox v-model="checkedAll" @change="checkedAllFun"></el-checkbox>
         </el-col>
         <el-col title="序号" :span="1">序号</el-col>
         <el-col title="合同编号" :span="3">合同编号</el-col>
@@ -54,10 +51,7 @@
       <div class="content-list-box" v-if="dataList.length != 0">
         <el-row v-for="(item, index) in dataList" :key="index">
           <el-col :span="1">
-            <el-checkbox
-              v-model="item.checked"
-              @change="checkedFun(item)"
-            ></el-checkbox>
+            <el-checkbox v-model="item.checked" @change="checkedFun(item)"></el-checkbox>
           </el-col>
           <el-col title="序号" :span="1">序号</el-col>
           <el-col title="合同编号" :span="3">合同编号</el-col>
@@ -170,11 +164,7 @@ export default {
     },
     //单选方法
     checkedFun(item) {
-      this.operatingArr = this.$common.checkedFun(
-        item,
-        this.operatingArr,
-        "orderId"
-      );
+      this.operatingArr = this.$common.checkedFun(item, this.operatingArr, "orderId");
     },
   },
 };
