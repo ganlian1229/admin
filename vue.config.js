@@ -1,3 +1,5 @@
+const ScriptSetup = require('unplugin-vue2-script-setup/webpack').default
+
 module.exports = {
     devServer: {
         disableHostCheck: true,
@@ -18,7 +20,7 @@ module.exports = {
         }
     },
     //关闭eslint
-    lintOnSave: false,
+    lintOnSave: true,
     assetsDir: './',
     publicPath: './',
     //打包后输出文件夹名称
@@ -27,8 +29,13 @@ module.exports = {
     transpileDependencies: [],
     runtimeCompiler: undefined,
     productionSourceMap: false,
-    parallel: undefined,
     css: undefined,
+    parallel: false,
+    configureWebpack: {
+        plugins: [
+            ScriptSetup({ /* options */ }),
+        ],
+    },
     // chainWebpack: config => {
     //     // 其他配置
     //     const imagesRule = config.module.rule('images')

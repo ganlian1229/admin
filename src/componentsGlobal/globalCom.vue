@@ -1,15 +1,15 @@
 <template>
-  <div class="globalCom">
-    动态添加的全局组件
-  </div>
+    <div class="globalCom">
+        动态添加的全局组件
+    </div>
 </template>
 <script>
 export default {
-  data() {
-    return {}
-  },
-  created() {},
-  methods: {},
-}
+    data() {
+        return {};
+    },
+    created() {},
+    methods: {}
+};
 </script>
-<style lang="less" scoped></style>
+<style lang="scss" scoped></style>

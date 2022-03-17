@@ -29,7 +29,7 @@ export default {
   computed: {},
 };
 </script>
-<style lang="less">
+<style lang="scss">
 .article-admin {
   background-color: transparent !important;
 }

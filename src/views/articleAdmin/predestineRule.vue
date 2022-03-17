@@ -84,7 +84,7 @@ export default {
   },
 };
 </script>
-<style lang="less">
+<style lang="scss">
 .article-admin {
   background-color: transparent !important;
   .other {

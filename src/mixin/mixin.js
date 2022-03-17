@@ -1,11 +1,11 @@
 //全局混入
 export default {
-    data() {
+    data () {
         return {
             isMixinData: "mixinData",
         }
     },
-    created(){
-        
+    created () {
+
     }
 }

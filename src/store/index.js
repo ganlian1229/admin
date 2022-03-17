@@ -8,7 +8,7 @@ export default new Vuex.Store({
     userInfo: JSON.parse(sessionStorage.getItem("userInfo")) || null
   },
   mutations: {
-    setUserInfo(state, data) {
+    setUserInfo (state, data) {
       state.userInfo = data;
     }
   },

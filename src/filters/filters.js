@@ -3,7 +3,7 @@
  */
 export default {
   //数字金额转化为大写
-  smallToBig(n) {
+  smallToBig (n) {
     let unit = "仟佰拾亿仟佰拾万仟佰拾元角分",
       str = "";
     n += "00";
@@ -49,7 +49,7 @@ export default {
     }
   },
   //保留两位小数
-  retainTow(num) {
+  retainTow (num) {
     let f = parseFloat(num);
     if (isNaN(f)) {
       return false;
