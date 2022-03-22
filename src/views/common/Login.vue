@@ -31,7 +31,6 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex';
 import { resetRouter } from '@/router/index';
 export default {
     name: 'login',
@@ -56,6 +55,7 @@ export default {
     },
     mounted() {},
     methods: {
+        // eslint-disable-next-line no-undef
         ...mapMutations(['setUserInfo']),
         //登录
         submitForm() {

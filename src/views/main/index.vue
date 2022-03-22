@@ -16,9 +16,6 @@
             </p>
             <p>使用保留两位小数（四舍五入）：{{ number | retainTow }}</p>
             <p>使用vuex储存的登录userId：{{ userInfo.userId }}</p>
-            <el-button size="small" type="primary" @click="filtersFun()">
-                点我手动调用全局过滤器
-            </el-button>
             <div class="load-more-box" v-loadmore="moreFun">
                 <p v-for="(item, index) in dataList" :key="index">{{ index }}</p>
             </div>
@@ -36,52 +33,35 @@
         </div>
     </div>
 </template>
-<script>
-import { mapState } from 'vuex';
+<script setup>
 import testCom from '@/views/main/components/testCom';
-export default {
-    components: {
-        testCom
-    },
-    computed: {
-        ...mapState(['userInfo'])
-    },
-    data() {
-        return {
-            number: '',
-            dataList: []
-        };
-    },
-    mounted() {
-        this.getDataList();
-        console.log(this.isMixinData);
-    },
-    methods: {
-        longPressFun() {
-            console.log('长按事件触发！');
-        },
-        boxResizeFun() {
-            console.log('box-resize大小改变了！');
-        },
-        moreFun() {
-            this.getDataList();
-        },
-        dragFun(event) {
-            console.log(event);
-        },
-        getDataList() {
-            for (let i = 0; i < 20; i++) {
-                this.dataList.push({
-                    index: i
-                });
-            }
-        },
-        filtersFun() {
-            let text = this.$options.filters['smallToBig']('150');
-            console.log(text);
-        }
+import store from '@/store';
+let number = ref('');
+let dataList = ref([]);
+
+onMounted(() => {
+    getDataList();
+});
+let longPressFun = () => {
+    console.log('长按事件触发！');
+};
+let boxResizeFun = () => {
+    console.log('box-resize大小改变了！');
+};
+let moreFun = () => {
+    getDataList();
+};
+let dragFun = (event) => {
+    console.log(event);
+};
+let getDataList = () => {
+    for (let i = 0; i < 20; i++) {
+        dataList.value.push({
+            index: i
+        });
     }
 };
+let userInfo = computed(() => store.state.userInfo);
 </script>
 <style lang="scss">
 .main-index {

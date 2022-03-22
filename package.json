@@ -32,7 +32,10 @@
     "prettier-eslint": "^13.0.0",
     "sass": "^1.27.0",
     "sass-loader": "^10.0.4",
+    "unplugin-auto-import": "^0.6.6",
+    "unplugin-vue-components": "^0.18.3",
     "unplugin-vue2-script-setup": "^0.10.0",
+    "vue-global-api": "^0.4.1",
     "vue-template-compiler": "^2.6.14"
   }
 }

@@ -1,4 +1,6 @@
 const ScriptSetup = require('unplugin-vue2-script-setup/webpack').default
+const AutoImport = require('unplugin-auto-import/webpack')
+const Components = require('unplugin-vue-components/webpack')
 
 module.exports = {
     devServer: {
@@ -19,38 +21,25 @@ module.exports = {
             }
         }
     },
-    //关闭eslint
-    lintOnSave: true,
+    lintOnSave: true,//eslint是否开启
     assetsDir: './',
     publicPath: './',
-    //打包后输出文件夹名称
-    outputDir: process.env.outputDir,
-    //为了兼容ie  在打包的时候编译  
-    transpileDependencies: [],
-    runtimeCompiler: undefined,
-    productionSourceMap: false,
-    css: undefined,
-    parallel: false,
+    outputDir: process.env.outputDir,//打包后输出文件夹名称
+    productionSourceMap: false,//打包时候是否生成Map文件
     configureWebpack: {
         plugins: [
             ScriptSetup({ /* options */ }),
+            AutoImport({
+                resolvers: [],
+                imports: ['@vue/composition-api', 'vuex'],//需要自动导入
+                dts: "src/auto-imports.d.ts"
+            }),
+            Components({
+                resolvers: [],//自动导入elementui组件
+                // 指定组件位置，默认是src/components
+                dirs: ['src/components', 'src/componentsGlobal'],//自动导入自定义组件
+                dts: "src/components.d.ts"
+            })
         ],
     },
-    // chainWebpack: config => {
-    //     // 其他配置
-    //     const imagesRule = config.module.rule('images')
-    //     imagesRule.uses.clear()
-    //     imagesRule.use('url-loader')
-    //         .loader('url-loader')
-    //         .options({
-    //             limit: 1,
-    //             fallback: {
-    //                 loader: 'file-loader',
-    //                 options: {
-    //                     name: 'img/[name].[ext]',
-    //                     // publicPath: process.env.NODE_ENV === 'production' ? '//game.gtimg.cn/images/slg/ingame/all201905/' : './'
-    //                 }
-    //             }
-    //         });
-    // }
 }
