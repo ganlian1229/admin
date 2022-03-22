@@ -5,10 +5,6 @@
 declare module 'vue' {
   export interface GlobalComponents {
     Container: typeof import('./components/Container.vue')['default']
-    ElButton: typeof import('element-ui/lib/button')['default']
-    ElForm: typeof import('element-ui/lib/form')['default']
-    ElFormItem: typeof import('element-ui/lib/form-item')['default']
-    ElInput: typeof import('element-ui/lib/input')['default']
     GlobalCom: typeof import('./componentsGlobal/globalCom.vue')['default']
     LeftSidebar: typeof import('./components/container/leftSidebar.vue')['default']
     MouseSelect: typeof import('./components/mouseSelect.vue')['default']
