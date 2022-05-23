@@ -9,7 +9,7 @@ specifiers:
   axios: ^0.19.2
   babel-eslint: ^10.1.0
   babel-plugin-transform-remove-console: ^6.9.4
-  core-js: 3.19.1
+  core-js: 3.22.6
   cross-env: ^7.0.3
   element-ui: ^2.15.5
   eslint: ^6.8.0
@@ -31,7 +31,7 @@ specifiers:
 
 dependencies:
   axios: 0.19.2
-  core-js: 3.19.1
+  core-js: 3.22.6
   element-ui: 2.15.8_vue@2.6.14
   qs: 6.10.3
   vue: 2.6.14
@@ -3744,15 +3744,9 @@ packages:
     requiresBuild: true
     dev: false
 
-  /core-js/3.19.1:
-    resolution: {integrity: sha1-9vFzyuI+c6fYj6I7bp2jKSdsZkE=}
-    requiresBuild: true
-    dev: false
-
   /core-js/3.22.6:
     resolution: {integrity: sha512-2IGcGH00z9I4twgNWU4uGCNEsBFG1s2JudVQrgSCoVhOfwoTwQjxC8aMo9exrpTMOxvobggEpaHnGMmQY4cfBQ==}
     requiresBuild: true
-    dev: true
 
   /core-util-is/1.0.2:
     resolution: {integrity: sha1-tf1UIgqivFq1eqtxQMlAdUUDwac=}
