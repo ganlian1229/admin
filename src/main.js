@@ -33,6 +33,10 @@ import directive from "./directive/index";
 for (let key in directive) {
   Vue.directive(key, directive[key])
 }
+
+import test from '@/directive/test';
+Vue.directive('test', test)
+
 //可使用vue3语法（兼容vue2语法）
 import compositionApi from "@vue/composition-api"
 Vue.use(compositionApi)

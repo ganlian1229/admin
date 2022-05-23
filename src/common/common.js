@@ -39,6 +39,7 @@ export default class CommonFun {
             target = Array.isArray(source) ? [] : {}
             // 遍历source，并且判断是source的属性才拷贝
             for (let key in source) {
+                // eslint-disable-next-line no-prototype-builtins
                 if (source.hasOwnProperty(key)) {
                     if (typeof source[key] !== 'object') {
                         target[key] = source[key]
