@@ -1,35 +1,9 @@
 //公用方法
-// checkedAll变量传过来  arr：需要全选的数组 addArr：全选之后的数组（做删除或者撤回操作的数组） variable：需要做删除或者撤回的变量名
-export function checkedAllFun (checkedAll, arr, addArr, variable) {
-    console.log(checkedAll)
-    if (checkedAll) {
-        addArr = [];
-        arr.forEach(item => {
-            item.checked = true;
-            addArr.push(item[variable])
-        })
-    } else {
-        arr.forEach(item => {
-            item.checked = false;
-        })
-        addArr = []
-    }
-    checkedAll = !checkedAll;
-    return addArr;
-}
-export function checkedFun (item, addArr, variable) {
-    // console.log(item);
-    if (item.checked) {
-        addArr.push(item[variable]);
-        // console.log(addArr)
-    } else {
-        if (addArr.indexOf(item[variable]) > -1) {
-            addArr.splice(addArr.indexOf(item[variable]), 1)
-        }
-    }
-    return addArr;
-}
-//对象、数组深拷贝
+/**
+ * @Description: 对象、数组深拷贝
+ * @param {*} source
+ * @return {*}
+ */
 export function deepCopy (source) {
     if (!source) return
     let target;
@@ -53,7 +27,11 @@ export function deepCopy (source) {
     }
     return target
 }
-//数组去重方法
+/**
+ * @Description: 数组去重方法
+ * @param {*} arr
+ * @return {*}
+ */
 export function delArr (arr) {
     var newArr = [];
     for (var i = 0; i < arr.length; i++) {
@@ -61,7 +39,7 @@ export function delArr (arr) {
         if (newArr.indexOf(arr[i]) == -1) {
             newArr.push(arr[i]);
             if (item.children && item.children.length) {
-                item.children = this.delArr(item.children)
+                item.children = delArr(item.children)
             }
         }
     }

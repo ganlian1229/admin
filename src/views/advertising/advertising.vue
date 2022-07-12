@@ -35,9 +35,6 @@
 
         <div class="content-scroll-box">
             <el-row v-if="dataList.length != 0">
-                <el-col :span="1">
-                    <el-checkbox v-model="checkedAll" @change="checkedAllFun"></el-checkbox>
-                </el-col>
                 <el-col title="序号" :span="1">序号</el-col>
                 <el-col title="合同编号" :span="3">合同编号</el-col>
                 <el-col title="单位名称" :span="4">单位名称</el-col>
@@ -50,12 +47,6 @@
             </el-row>
             <div class="content-list-box" v-if="dataList.length != 0">
                 <el-row v-for="(item, index) in dataList" :key="index">
-                    <el-col :span="1">
-                        <el-checkbox
-                            v-model="item.checked"
-                            @change="checkedFun(item)"
-                        ></el-checkbox>
-                    </el-col>
                     <el-col title="序号" :span="1">序号</el-col>
                     <el-col title="合同编号" :span="3">合同编号</el-col>
                     <el-col title="单位名称" :span="4">单位名称</el-col>
@@ -156,19 +147,6 @@ export default {
             console.log(this.pageNum, this.pageSize);
             // console.log(this.filterTime ? this.filterTime[0] : "");
             // console.log(this.filterTime ? this.filterTime[1] : "");
-        },
-        //全选方法
-        checkedAllFun() {
-            this.operatingArr = this.$common.checkedAllFun(
-                this.checkedAll,
-                this.dataList,
-                this.operatingArr,
-                'orderId'
-            );
-        },
-        //单选方法
-        checkedFun(item) {
-            this.operatingArr = this.$common.checkedFun(item, this.operatingArr, 'orderId');
         }
     }
 };

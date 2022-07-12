@@ -4,7 +4,9 @@ module.exports = {
     node: true
   },
   globals: {
-
+    storeToRefs: true,
+    useRoute: true,
+    useRouter: true,
   },
   extends: [
     'plugin:vue/essential',

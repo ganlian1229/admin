@@ -34,7 +34,6 @@
         </div>
         <div class="content-scroll-box">
             <el-row v-if="dataList.length != 0">
-                <el-col :span="2"> </el-col>
                 <el-col title="序号" :span="1">序号</el-col>
                 <el-col title="标题" :span="4">标题</el-col>
                 <el-col :span="1"></el-col>
@@ -47,9 +46,6 @@
             <div class="content-list-box" v-if="dataList.length != 0">
                 <div class="list-item-box" v-for="(item, index) in dataList" :key="index">
                     <el-row :class="item.checked ? 'act' : ''">
-                        <el-col :span="2" @click.native="dataListClick(item)">
-                            <i class="el-icon-arrow-right"></i>
-                        </el-col>
                         <el-col title="序号" :span="1">序号</el-col>
                         <el-col title="标题" :span="4">标题</el-col>
                         <el-col :span="1"></el-col>
@@ -189,19 +185,6 @@ export default {
             console.log(this.pageNum, this.pageSize);
             console.log(this.filterTime ? this.filterTime[0] : '');
             console.log(this.filterTime ? this.filterTime[1] : '');
-        },
-        //全选方法
-        checkedAllFun() {
-            this.operatingArr = this.$common.checkedAllFun(
-                this.checkedAll,
-                this.dataList,
-                this.operatingArr,
-                'orderId'
-            );
-        },
-        //单选方法
-        checkedFun(item) {
-            this.operatingArr = this.$common.checkedFun(item, this.operatingArr, 'orderId');
         }
     }
 };

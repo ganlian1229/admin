@@ -30,25 +30,44 @@
 import testCom from '@/views/main/components/testCom';
 import storeObj from '@/pinia/index.js';
 let number = ref('');
-let dataList = ref([]);
 let mainStore = storeObj.mainStore;
+let { userInfo } = storeToRefs(storeObj.mainStore);
 console.log('mainStore', mainStore);
-
+/**
+ * @Description: 生命周期（dom加载完成）
+ * @return {*}
+ */
 onMounted(() => {
     getDataList();
 });
+/**
+ * @Description: 长按事件触发
+ * @return {*}
+ */
 let longPressFun = () => {
     console.log('长按事件触发！');
 };
+/**
+ * @Description: 盒子大小改变回调
+ * @return {*}
+ */
 let boxResizeFun = () => {
     console.log('box-resize大小改变了！');
 };
-let moreFun = () => {
-    getDataList();
-};
+
+/**
+ * @Description: 拖动回调
+ * @param {*} event
+ * @return {*}
+ */
 let dragFun = (event) => {
     console.log(event);
 };
+let dataList = ref([]);
+/**
+ * @Description: 获取数据
+ * @return {*}
+ */
 let getDataList = () => {
     for (let i = 0; i < 20; i++) {
         dataList.value.push({
@@ -56,7 +75,13 @@ let getDataList = () => {
         });
     }
 };
-let userInfo = computed(() => mainStore.userInfo);
+/**
+ * @Description: 更多数据
+ * @return {*}
+ */
+let moreFun = () => {
+    getDataList();
+};
 </script>
 <style lang="scss">
 .main-index {
