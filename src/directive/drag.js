@@ -33,6 +33,7 @@ let drag = {
 
     if (isEquipment() == "pc") {
       el.onmousedown = function (ev) {
+        ev.stopPropagation();
         let x = ev.clientX - dragDom.offsetLeft;
         let y = ev.clientY - dragDom.offsetTop;
         let endX, endY;
@@ -46,6 +47,7 @@ let drag = {
           });
         }
         el.onmousemove = function (ev) {
+          ev.preventDefault();
           endX = ev.clientX - x;
           endY = ev.clientY - y;
           dragDom.style.left = endX + "px";

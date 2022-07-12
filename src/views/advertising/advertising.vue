@@ -84,13 +84,11 @@
 </template>
 <script>
 import pagination from '@/components/pagination/pagination';
-import paginationData from '@/mixin/paginationData';
 export default {
     name: 'advertising',
     components: {
         pagination
     },
-    mixins: [paginationData],
     data() {
         return {
             pickerOptions: {
@@ -127,7 +125,10 @@ export default {
             filterTime: '', //时间筛选
             checkedAll: false, //全选变量
             dataList: [], //数据列表
-            operatingArr: [] //需要操作的数组
+            operatingArr: [], //需要操作的数组
+            pageNum: 0, //当前页
+            pageSize: 20, //每页数据条数
+            totalCount: 25 //数据总数
         };
     },
     //被缓存的组件生命周期（被缓存的组件显示时执行）

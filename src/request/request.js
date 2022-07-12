@@ -2,7 +2,7 @@ import Axios from 'axios';
 import QS from "qs";
 import router from '@/router/index';
 import { Loading, Message } from "element-ui";
-// import store from "@/store/index.js"
+
 // 请求头
 // Axios.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded; charset=UTF-8";//FROM
 Axios.defaults.headers.post["Content-Type"] = "application/json;charset=UTF-8";//JSON

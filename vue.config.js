@@ -3,6 +3,14 @@ const AutoImport = require('unplugin-auto-import/webpack')
 const Components = require('unplugin-vue-components/webpack')
 
 module.exports = {
+    chainWebpack: config => {
+        config
+            .plugin('html')
+            .tap(args => {
+                args[0].title = 'admin'
+                return args
+            })
+    },
     devServer: {
         disableHostCheck: true,
         port: 8085,
@@ -31,7 +39,7 @@ module.exports = {
             ScriptSetup({ /* options */ }),
             AutoImport({
                 resolvers: [],
-                imports: ['@vue/composition-api', 'vuex'],//需要自动导入
+                imports: ['vue', 'pinia'],//需要自动导入
                 dts: "src/auto-imports.d.ts"
             }),
             Components({

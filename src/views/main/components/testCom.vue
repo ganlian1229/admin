@@ -6,13 +6,14 @@
     </div>
 </template>
 <script setup>
-import store from '@/store';
+import storeObj from '@/pinia/index.js';
+let mainStore = storeObj.mainStore;
 let testValue = ref('123');
 let changeUserInfo = () => {
     let obj = {
         userId: 2
     };
-    store.commit('setUserInfo', obj);
+    mainStore.setUserInfo(obj);
 };
 </script>
 

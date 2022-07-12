@@ -1,8 +1,6 @@
 <template>
     <div class="sidebar-container" :class="value ? 'hideSidebar' : ''">
-        <div class="logo-box">
-            logo
-        </div>
+        <div class="logo-box">logo</div>
         <el-scrollbar wrap-class="scrollbar-wrapper">
             <el-menu
                 :default-active="$route.path"
@@ -51,6 +49,7 @@
 </template>
 <script>
 import routerArr from '@/router/routes';
+import { deepCopy } from '@/common/common.js';
 export default {
     props: {
         //是否收起菜单 true 收起
@@ -70,7 +69,7 @@ export default {
         };
     },
     created() {
-        this.showMenu(this.$common.deepCopy(routerArr));
+        this.showMenu(deepCopy(routerArr));
     },
     mounted() {},
     methods: {
@@ -126,13 +125,13 @@ export default {
         width: 100%;
     }
 
-    ::v-deep .el-scrollbar {
+    :deep(.el-scrollbar) {
         height: 100%;
         .scrollbar-wrapper {
             overflow-x: hidden;
         }
     }
-    ::v-deep .el-menu {
+    :deep(.el-menu) {
         border: none;
         height: 100%;
         width: 100% !important;
@@ -147,19 +146,19 @@ export default {
             }
         }
     }
-    ::v-deep.el-submenu .el-menu-item,
+    :deep(.el-submenu .el-menu-item),
     .nest-menu .el-submenu > .el-submenu__title {
         min-width: 210px !important;
         background-color: #212740 !important;
         // padding-left: 56px !important;
     }
-    ::v-deep .el-submenu__title {
+    :deep(.el-submenu__title) {
         font-size: 16px;
     }
-    ::v-deep .el-menu-item {
+    :deep(.el-menu-item) {
         font-size: 16px;
     }
-    ::v-deep .el-menu .el-submenu .el-menu-item-group__title {
+    :deep(.el-menu .el-submenu .el-menu-item-group__title) {
         display: none;
     }
     .nav-icon {

@@ -32,6 +32,8 @@
 
 <script>
 import { resetRouter } from '@/router/index';
+import { mapActions, mapState } from 'pinia';
+import mainStore from '@/pinia/mainStore';
 export default {
     name: 'login',
     data() {
@@ -55,8 +57,7 @@ export default {
     },
     mounted() {},
     methods: {
-        // eslint-disable-next-line no-undef
-        ...mapMutations(['setUserInfo']),
+        ...mapActions(mainStore, ['setUserInfo']),
         //登录
         submitForm() {
             this.$refs['ruleForm'].validate((valid) => {
@@ -67,7 +68,6 @@ export default {
                     let userInfo = {
                         userId: 1
                     };
-                    sessionStorage.setItem('userInfo', JSON.stringify(userInfo));
                     this.setUserInfo(userInfo);
                 } else {
                     console.log('error submit!!');
@@ -103,7 +103,7 @@ export default {
         padding: 20px;
         z-index: 9999;
         background: #f0f2f5;
-        ::v-deep .el-form-item__content {
+        :deep(.el-form-item__content) {
             margin-left: 0 !important;
         }
     }

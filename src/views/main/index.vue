@@ -8,14 +8,7 @@
                     v-model="number"
                 ></el-input>
             </p>
-            <p v-copy="'使用全局过滤器转化的大写金额：' + $options.filters['smallToBig'](number)">
-                使用全局过滤器转化的大写金额：
-                <span>
-                    {{ number | smallToBig }}
-                </span>
-            </p>
-            <p>使用保留两位小数（四舍五入）：{{ number | retainTow }}</p>
-            <p>使用vuex储存的登录userId：{{ userInfo.userId }}</p>
+            <p>使用pinia储存的登录userId：{{ userInfo.userId }}</p>
             <div class="load-more-box" v-loadmore="moreFun">
                 <p v-for="(item, index) in dataList" :key="index">{{ index }}</p>
             </div>
@@ -35,9 +28,11 @@
 </template>
 <script setup>
 import testCom from '@/views/main/components/testCom';
-import store from '@/store';
+import storeObj from '@/pinia/index.js';
 let number = ref('');
 let dataList = ref([]);
+let mainStore = storeObj.mainStore;
+console.log('mainStore', mainStore);
 
 onMounted(() => {
     getDataList();
@@ -61,7 +56,7 @@ let getDataList = () => {
         });
     }
 };
-let userInfo = computed(() => store.state.userInfo);
+let userInfo = computed(() => mainStore.userInfo);
 </script>
 <style lang="scss">
 .main-index {
