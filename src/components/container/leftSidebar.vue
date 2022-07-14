@@ -12,7 +12,7 @@
                 text-color="#555e86"
                 active-text-color="#555e86"
             >
-                <template v-for="(item, index) in menus" :index="index">
+                <template v-for="(item, index) in menuList" :index="index">
                     <!-- 多个子集 -->
                     <template v-if="item.meta.show && !item.meta.isOne">
                         <el-submenu :index="item.name" :key="item.path" :select="index">
@@ -47,58 +47,47 @@
         </el-scrollbar>
     </div>
 </template>
-<script>
+<script setup>
 import routerArr from '@/router/routes';
 import { deepCopy } from '@/common/common.js';
-export default {
-    props: {
-        //是否收起菜单 true 收起
-        value: {
-            type: Boolean,
-            default: () => false
-        }
-    },
-    model: {
-        value: 'value',
-        event: 'valueChange'
-    },
-    data() {
-        return {
-            menus: [], //左侧导航列表
-            openedsArr: [] //需要展开的path
-        };
-    },
-    created() {
-        this.showMenu(deepCopy(routerArr));
-    },
-    mounted() {},
-    methods: {
-        //显示左侧导航
-        showMenu(arr) {
-            var menus = [];
-            arr.forEach((val) => {
-                if (val.meta) {
-                    if (val.meta.show) {
-                        if (val.children.length) {
-                            var child = [];
-                            val.children.forEach((cval) => {
-                                if (cval.meta.show) {
-                                    child.push(cval);
-                                }
-                            });
-                            val.children = child;
-                            menus.push(val);
-                        } else {
-                            menus.push(val);
-                        }
-                    }
-                }
-            });
-            this.menus = menus;
-            // console.log(this.menus);
-        }
+let props = defineProps({
+    //是否收起菜单 true 收起
+    value: {
+        type: Boolean,
+        default: () => false
     }
-};
+});
+let emit = defineEmits(['value:update']);
+//左侧导航列表
+let menuList = ref([]);
+//需要展开的path
+let openedsArr = ref([]);
+onMounted(() => {
+    showMenu(deepCopy(routerArr));
+});
+//显示左侧导航
+function showMenu(arr) {
+    let menus = [];
+    arr.forEach((val) => {
+        if (val.meta) {
+            if (val.meta.show) {
+                if (val.children.length) {
+                    var child = [];
+                    val.children.forEach((cval) => {
+                        if (cval.meta.show) {
+                            child.push(cval);
+                        }
+                    });
+                    val.children = child;
+                    menus.push(val);
+                } else {
+                    menus.push(val);
+                }
+            }
+        }
+    });
+    menuList.value = menus;
+}
 </script>
 <style lang="scss" scoped>
 .sidebar-container {

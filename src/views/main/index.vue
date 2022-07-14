@@ -30,9 +30,7 @@
 import testCom from '@/views/main/components/testCom';
 import storeObj from '@/pinia/index.js';
 let number = ref('');
-let mainStore = storeObj.mainStore;
 let { userInfo } = storeToRefs(storeObj.mainStore);
-console.log('mainStore', mainStore);
 /**
  * @Description: 生命周期（dom加载完成）
  * @return {*}

@@ -16,70 +16,50 @@
         </div>
     </div>
 </template>
-<script>
+<script setup>
 import mouseSelect from '@/components/mouseSelect';
-export default {
-    components: {
-        mouseSelect
+let fileList = ref([
+    {
+        isAct: false,
+        text: 'file1'
     },
-
-    data() {
-        return {
-            fileList: [
-                {
-                    isAct: false,
-                    text: 'file1'
-                },
-                {
-                    isAct: false,
-                    text: 'file2'
-                },
-                {
-                    isAct: false,
-                    text: 'file3'
-                },
-                {
-                    isAct: false,
-                    text: 'file4'
-                },
-                {
-                    isAct: false,
-                    text: 'file5'
-                },
-                {
-                    isAct: false,
-                    text: 'file6'
-                },
-                {
-                    isAct: false,
-                    text: 'file7'
-                },
-                {
-                    isAct: false,
-                    text: 'file8'
-                },
-                {
-                    isAct: false,
-                    text: 'file9'
-                }
-            ]
-        };
+    {
+        isAct: false,
+        text: 'file2'
     },
-    created() {},
-    mounted() {},
-    methods: {
-        //选择成功
-        selectSuccess(arr) {
-            // this.fileList.forEach((item) => {
-            //   item.isAct = false
-            // })
-            console.log(arr);
-            // arr.forEach((item) => {
-            //   this.fileList[item].isAct = true
-            // })
-        }
+    {
+        isAct: false,
+        text: 'file3'
+    },
+    {
+        isAct: false,
+        text: 'file4'
+    },
+    {
+        isAct: false,
+        text: 'file5'
+    },
+    {
+        isAct: false,
+        text: 'file6'
+    },
+    {
+        isAct: false,
+        text: 'file7'
+    },
+    {
+        isAct: false,
+        text: 'file8'
+    },
+    {
+        isAct: false,
+        text: 'file9'
     }
-};
+]);
+//选择成功
+function selectSuccess(arr) {
+    console.log(arr);
+}
 </script>
 <style lang="scss">
 .advertising {

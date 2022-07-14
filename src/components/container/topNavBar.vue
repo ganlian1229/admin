@@ -10,47 +10,39 @@
         </div>
     </div>
 </template>
-<script>
+<script setup>
 import { resetRouter } from '@/router/index.js';
-export default {
-    props: {
-        //是否收起菜单 true 收起
-        value: {
-            type: Boolean,
-            default: () => false
-        }
-    },
-    model: {
-        value: 'value',
-        event: 'valueChange'
-    },
-    data() {
-        return {};
-    },
-    methods: {
-        //切换左侧收起/展开
-        switchActFun() {
-            // console.log(this.value);
-            this.$emit('valueChange', !this.value);
-        },
-        logout() {
-            this.$confirm('是否确认退出登录?', '提示', {
-                confirmButtonText: '确定',
-                cancelButtonText: '取消',
-                type: 'warning',
-                center: true
-            })
-                .then(() => {
-                    this.$router.push({ name: 'login' });
-                    sessionStorage.clear();
-                    resetRouter();
-                })
-                .catch(() => {
-                    console.log('取消退出！');
-                });
-        }
+import { MessageBox } from 'element-ui';
+import router from '@/router/index.js';
+let props = defineProps({
+    //是否收起菜单 true 收起
+    value: {
+        type: Boolean,
+        default: () => false
     }
-};
+});
+let emit = defineEmits(['value:update']);
+//切换左侧收起/展开
+function switchActFun() {
+    emit('value:update', props.value);
+}
+
+function logout() {
+    MessageBox.confirm('是否确认退出登录?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning',
+        center: true
+    })
+        .then(() => {
+            router.push({ name: 'login' });
+            sessionStorage.clear();
+            resetRouter();
+        })
+        .catch(() => {
+            console.log('取消退出！');
+        });
+}
 </script>
 <style lang="scss" scoped>
 .top-navbar {

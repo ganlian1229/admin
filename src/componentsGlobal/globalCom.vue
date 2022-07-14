@@ -3,13 +3,8 @@
         动态添加的全局组件
     </div>
 </template>
-<script>
-export default {
-    data() {
-        return {};
-    },
-    created() {},
-    methods: {}
-};
+<script setup>
+
 </script>
+
 <style lang="scss" scoped></style>

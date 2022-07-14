@@ -26,6 +26,8 @@ module.exports = {
     'no-console': 'off',//禁止使用console
     'no-debugger': 'off',//禁止使用debugger
     'no-empty-source': 'off',
-    'no-unused-vars': 'off'//不能有声明后未被使用的变量或参数
+    'no-unused-vars': 'off',//不能有声明后未被使用的变量或参数
+    'vue/multi-word-component-names': 'off',//关闭组件名称检测
+    'vue/no-useless-template-attributes': 'off'//关闭template不能作为标签的检测
   }
 }

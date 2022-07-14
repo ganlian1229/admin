@@ -34,9 +34,8 @@
     "sass": "^1.53.0",
     "sass-loader": "^10.3.1",
     "unplugin-auto-import": "^0.6.9",
-    "unplugin-vue-components": "^0.18.5",
-    "unplugin-vue2-script-setup": "^0.10.2",
-    "vue-global-api": "^0.4.1",
-    "vue-template-compiler": "^2.7.4"
+    "unplugin-vue-components": "^0.21.1",
+    "unplugin-vue2-script-setup": "^0.11.2",
+    "vue-global-api": "^0.4.1"
   }
 }

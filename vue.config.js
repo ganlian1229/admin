@@ -39,7 +39,7 @@ module.exports = {
             ScriptSetup({ /* options */ }),
             AutoImport({
                 resolvers: [],
-                imports: ['vue', 'pinia'],//需要自动导入
+                imports: ['vue', 'pinia', 'vue-router'],//需要自动导入
                 dts: "src/auto-imports.d.ts"
             }),
             Components({
