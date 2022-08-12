@@ -29,6 +29,13 @@ module.exports = {
             }
         }
     },
+    css: {
+        loaderOptions: {
+            scss: {
+                additionalData: `@import "@/assets/css/variable.scss";`
+            }
+        }
+    },
     lintOnSave: true,//eslint是否开启
     assetsDir: './',
     publicPath: './',
