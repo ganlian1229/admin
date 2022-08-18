@@ -26,16 +26,17 @@
     "babel-eslint": "^10.1.0",
     "babel-plugin-transform-remove-console": "^6.9.4",
     "cross-env": "^7.0.3",
-    "eslint": "^6.8.0",
+    "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-vue": "^6.2.2",
+    "eslint-plugin-prettier": "^3.4.1",
+    "eslint-plugin-vue": "^7.20.0",
+    "prettier": "^2.7.1",
     "prettier-eslint": "^13.0.0",
     "sass": "^1.53.0",
     "sass-loader": "^10.3.1",
     "unplugin-auto-import": "^0.6.9",
     "unplugin-vue-components": "^0.21.1",
-    "unplugin-vue2-script-setup": "^0.11.2",
-    "vue-global-api": "^0.4.1"
+    "vue-global-api": "^0.4.1",
+    "webpack": "^5.74.0"
   }
 }

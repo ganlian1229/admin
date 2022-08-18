@@ -33,9 +33,8 @@
 import { resetRouter } from '@/router/index';
 import storeObj from '@/pinia/index.js';
 import router from '@/router/index.js';
-
+let { setUserInfo } = storeObj.mainStore;
 console.log(router);
-
 let ruleFormData = reactive({
     username: 'admin',
     password: '123456'
@@ -52,7 +51,7 @@ let rules = reactive({
 });
 
 const ruleFormDom = ref(null);
-const mainStore = storeObj.mainStore;
+
 /**
  * @Description: 登录
  * @return {*}
@@ -66,7 +65,7 @@ function submitForm() {
             let userInfo = {
                 userId: 1
             };
-            mainStore.setUserInfo(userInfo);
+           setUserInfo(userInfo);
         } else {
             console.log('error submit!!');
             return false;

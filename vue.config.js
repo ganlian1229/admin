@@ -1,4 +1,3 @@
-const ScriptSetup = require('unplugin-vue2-script-setup/webpack').default
 const AutoImport = require('unplugin-auto-import/webpack')
 const Components = require('unplugin-vue-components/webpack')
 
@@ -43,7 +42,6 @@ module.exports = {
     productionSourceMap: false,//打包时候是否生成Map文件
     configureWebpack: {
         plugins: [
-            ScriptSetup({ /* options */ }),
             AutoImport({
                 resolvers: [],
                 imports: ['vue', 'pinia', 'vue-router'],//需要自动导入
