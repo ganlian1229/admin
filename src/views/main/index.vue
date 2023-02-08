@@ -28,7 +28,7 @@
 </template>
 <script setup>
 import testCom from '@/views/main/components/testCom';
-import storeObj from '@/pinia/index.js';
+import storeObj from '@/store/index.js';
 let number = ref('');
 let { userInfo } = storeToRefs(storeObj.mainStore);
 /**

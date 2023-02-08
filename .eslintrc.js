@@ -21,7 +21,7 @@ module.exports = {
     "vue/no-v-model-argument": "off",//在vue3中使用v-model报错
     "array-bracket-spacing": "off",//是否允许非空数组里面有多余的空格
     "object-curly-spacing": "off",//大括号内是否允许不必要的空格
-    'prettier/prettier': 'off',
+    // 'prettier/prettier': 'off',
     'space-before-function-paren': "off",//函数定义时括号前面要不要有空格
     'no-console': 'off',//禁止使用console
     'no-debugger': 'off',//禁止使用debugger

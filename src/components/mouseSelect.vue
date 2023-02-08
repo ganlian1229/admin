@@ -115,6 +115,7 @@ function boxMousemove(event) {
             activeArr.value.push(i);
             if (props.isHot) {
                 if (!props.value[i].isAct) {
+                    // eslint-disable-next-line vue/no-mutating-props
                     props.value[i].isAct = true;
                 }
                 emit('value:update', props.value);
@@ -124,6 +125,7 @@ function boxMousemove(event) {
             cancelArr.value.push(i);
             if (props.isHot) {
                 if (props.value[i].isAct) {
+                    // eslint-disable-next-line vue/no-mutating-props
                     props.value[i].isAct = false;
                 }
                 emit('value:update', props.value);

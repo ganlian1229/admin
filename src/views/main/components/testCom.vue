@@ -6,7 +6,7 @@
     </div>
 </template>
 <script setup>
-import storeObj from '@/pinia/index.js';
+import storeObj from '@/store/index.js';
 const mainStore = storeObj.mainStore;
 let testValue = ref('123');
 let changeUserInfo = () => {

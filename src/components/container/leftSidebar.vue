@@ -35,7 +35,7 @@
                     </template>
                     <!-- 一个子集 -->
                     <template v-else>
-                        <router-link :to="item.path + '/' + item.meta.onePath" :key="item.name">
+                        <router-link :to="item.path + '/' + item.children[0].path" :key="item.name">
                             <el-menu-item :index="item.path">
                                 <i class="nav-icon" :class="item.meta.icon"></i>
                                 <span slot="title">{{ item.meta.title }}</span>
@@ -48,7 +48,7 @@
     </div>
 </template>
 <script setup>
-import routerArr from '@/router/routes';
+import dynamicRouter from '@/router/dynamicRouter';
 import { deepCopy } from '@/common/common.js';
 let props = defineProps({
     //是否收起菜单 true 收起
@@ -63,7 +63,7 @@ let menuList = ref([]);
 //需要展开的path
 let openedsArr = ref([]);
 onMounted(() => {
-    showMenu(deepCopy(routerArr));
+    showMenu(deepCopy(dynamicRouter));
 });
 //显示左侧导航
 function showMenu(arr) {
@@ -87,6 +87,7 @@ function showMenu(arr) {
         }
     });
     menuList.value = menus;
+    console.log('menuList', menuList.value);
 }
 </script>
 <style lang="scss" scoped>

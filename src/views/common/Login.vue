@@ -30,8 +30,9 @@
     </div>
 </template>
 <script setup>
-import { resetRouter } from '@/router/index';
-import storeObj from '@/pinia/index.js';
+import dynamicRouter from '@/router/dynamicRouter';
+import { addRouter } from '@/common/common';
+import storeObj from '@/store/index.js';
 import router from '@/router/index.js';
 let { setUserInfo } = storeObj.mainStore;
 console.log(router);
@@ -59,13 +60,11 @@ const ruleFormDom = ref(null);
 function submitForm() {
     ruleFormDom.value.validate((valid) => {
         if (valid) {
-            router.replace({
-                path: '/main/index'
-            });
             let userInfo = {
                 userId: 1
             };
-           setUserInfo(userInfo);
+            setUserInfo(userInfo);
+            addDynamicRoutes();
         } else {
             console.log('error submit!!');
             return false;
@@ -77,10 +76,11 @@ function submitForm() {
  * @return {*}
  */
 function addDynamicRoutes() {
-    //重置路由
-    resetRouter();
-    //添加需要的路由
-    router.addRoutes();
+    addRouter(dynamicRouter);
+    sessionStorage.setItem('isLogin', true);
+    router.replace({
+        path: '/main/index'
+    });
 }
 </script>
 
