@@ -3,7 +3,7 @@ export default [
         path: '/main',
         component: () => import('../components/Container.vue'),
         meta: {
-            icon: 'HomeFilled', //文字前的图标（element-ui的自带图标、如需自定义需要修改dom结构）
+            icon: 'el-icon-s-platform', //文字前的图标（element-ui的自带图标、如需自定义需要修改dom结构）
             show: true, //是否显示在右侧
             title: '首页', //显示在右侧的文字（给自己的标识）
             isOne: true //是否只有一个子集
@@ -25,7 +25,7 @@ export default [
         path: '/advertising',
         component: () => import('../components/Container.vue'),
         meta: {
-            icon: 'Cherry',
+            icon: 'el-icon-s-platform',
             show: true,
             title: '广告位',
             isOne: true
@@ -47,7 +47,7 @@ export default [
         path: '/advertising2',
         component: () => import('../components/Container.vue'),
         meta: {
-            icon: 'Brush',
+            icon: 'el-icon-s-platform',
             show: true,
             title: '广告位2',
             isOne: true
@@ -69,7 +69,7 @@ export default [
         path: '/advertising3',
         component: () => import('../components/Container.vue'),
         meta: {
-            icon: 'Briefcase',
+            icon: 'el-icon-s-platform',
             show: true,
             title: '广告位3',
             isOne: true
@@ -91,7 +91,7 @@ export default [
         path: '/articleAdmin',
         component: () => import('../components/Container.vue'),
         meta: {
-            icon: 'Folder',
+            icon: 'el-icon-s-platform',
             show: true,
             title: '文章管理',
             isOne: false

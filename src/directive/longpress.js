@@ -1,6 +1,6 @@
 // 长按事件 请不要与点击事件一起使用
-let longpress = {
-    bind: function (el, binding, vNode) {
+const longpress = {
+    bind: function(el, binding, vNode) {
         if (typeof binding.value !== 'function') {
             throw 'callback must be a function';
         }

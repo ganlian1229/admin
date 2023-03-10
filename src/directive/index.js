@@ -4,6 +4,8 @@ import drag from './drag'; //拖拽元素  绑定的当前元素可拖拽（兼�
 import copy from './copy'; //复制文本   接收需要复制的文本
 import longpress from './longpress'; //长按事件默认2秒   接收function  长按2秒后执行的事件
 import resize from './resize'; //被绑定的元素 windth、height 改变  接收function 改变时触发  原理是setInterval监听  尽量少用
+import debounce from './debounce'; //防抖
+import throttle from './throttle'; //节流
 
 import test from './test';
 
@@ -14,5 +16,7 @@ export default {
     copy,
     longpress,
     resize,
+    debounce,
+    throttle,
     test
 };

@@ -1,10 +1,10 @@
 //input只能输入数字输入其他会被过滤  可以传一个数字过来（决定小数点后保留几位） 记得放在v-model之前
 let decimalNumber = 0;
-let number = {
-    bind: function (el, { value }) {
+const number = {
+    bind: function(el, { value }) {
         console.log(el);
         decimalNumber = value ? value : 99;
-        el.children[0].addEventListener('keyup', function () {
+        el.children[0].addEventListener('keyup', function() {
             let regExp = new RegExp('([0-9]*)(.?[0-9]{0,' + decimalNumber + '})', 'g');
             el.children[0].value =
                 ('' + el.children[0].value) // 第一步：转成字符串

@@ -1,5 +1,5 @@
-let resize = {
-    bind: function (el, { value }) {
+const resize = {
+    bind: function(el, { value }) {
         let width = '',
             height = '';
         function isResize() {
