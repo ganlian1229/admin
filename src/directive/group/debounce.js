@@ -1,6 +1,6 @@
-const debounce = {
+export default {
     //被绑定元素插入父节点时调用 (仅保证父节点存在，但不一定已被插入文档中)。
-    inserted: function(el, { name, value }) {
+    inserted: function (el, { name, value }) {
         // console.log('debounce inserted执行', el, name, value);
         // console.log('parentNode', el.parentNode);
         let fn, event, time;
@@ -27,4 +27,3 @@ const debounce = {
         });
     }
 };
-export default debounce;

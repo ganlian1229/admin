@@ -1,5 +1,5 @@
-const resize = {
-    bind: function(el, { value }) {
+export default {
+    bind: function (el, { value }) {
         let width = '',
             height = '';
         function isResize() {
@@ -17,4 +17,3 @@ const resize = {
         clearInterval(el.vueSetInterval);
     }
 };
-export default resize;

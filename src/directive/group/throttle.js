@@ -1,6 +1,6 @@
-const throttle = {
+export default {
     //被绑定元素插入父节点时调用 (仅保证父节点存在，但不一定已被插入文档中)。
-    inserted: function(el, { name, value }) {
+    inserted: function (el, { name, value }) {
         let fn, event, time;
         if (typeof value === 'function') {
             fn = value;
@@ -26,4 +26,3 @@ const throttle = {
         });
     }
 };
-export default throttle;

@@ -14,8 +14,8 @@ function isEquipment() {
 function defaultEvent(e) {
     e.preventDefault();
 }
-const drag = {
-    inserted: function(el, { rawName, value }) {
+export default {
+    inserted: function (el, { rawName, value }) {
         let dragDom = null;
         let rawNameArr = rawName.split('.');
         if (rawNameArr.length > 1) {
@@ -32,7 +32,7 @@ const drag = {
         dragDom.style.position = 'absolute';
 
         if (isEquipment() == 'pc') {
-            el.onmousedown = function(ev) {
+            el.onmousedown = function (ev) {
                 let x = ev.clientX - dragDom.offsetLeft;
                 let y = ev.clientY - dragDom.offsetTop;
                 let endX, endY;
@@ -45,13 +45,13 @@ const drag = {
                         }
                     });
                 }
-                document.onmousemove = function(ev) {
+                document.onmousemove = function (ev) {
                     endX = ev.clientX - x;
                     endY = ev.clientY - y;
                     dragDom.style.left = endX + 'px';
                     dragDom.style.top = endY + 'px';
                 };
-                document.onmouseup = function() {
+                document.onmouseup = function () {
                     if (value) {
                         value({
                             type: 'end',
@@ -71,7 +71,7 @@ const drag = {
             let maxW; //定义盒子在x轴上可移动的最大值
             let maxH; //定义盒子在y轴上可移动的最大值
             let endX, endY;
-            dragDom.addEventListener('touchstart', function(e) {
+            dragDom.addEventListener('touchstart', function (e) {
                 //按下去时
                 maxW = e.srcElement.offsetParent.clientWidth - dragDom.offsetWidth;
                 maxH = e.srcElement.offsetParent.clientHeight - dragDom.offsetHeight;
@@ -90,7 +90,7 @@ const drag = {
                 }
                 dragDom.addEventListener('touchmove', defaultEvent, false); //注释后 靠边弹性返回
             });
-            dragDom.addEventListener('touchmove', function(e) {
+            dragDom.addEventListener('touchmove', function (e) {
                 //拖动时
                 var ev = e || window.event;
                 var touch = ev.targetTouches[0] || e;
@@ -109,7 +109,7 @@ const drag = {
                 dragDom.style.left = endX + 'px';
                 dragDom.style.top = endY + 'px';
             });
-            dragDom.addEventListener('touchend', function() {
+            dragDom.addEventListener('touchend', function () {
                 //松开时
                 if (value) {
                     value({
@@ -125,4 +125,3 @@ const drag = {
         }
     }
 };
-export default drag;
