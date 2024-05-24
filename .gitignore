@@ -20,5 +20,5 @@ yarn-error.log*
 *.sln
 *.sw?
 pnpm-lock.yaml
-auto-imports.d.ts
-components.d.ts
+src/components.d.ts
+src/auto-import.d.ts

@@ -1,4 +1,4 @@
-const copy = {
+export default {
     bind(el, { value }) {
         el.$value = value;
         el.handler = () => {
@@ -39,5 +39,3 @@ const copy = {
         el.removeEventListener('click', el.handler);
     }
 };
-
-export default copy;

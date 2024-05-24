@@ -1,5 +1,5 @@
 // 长按事件 请不要与点击事件一起使用
-const longpress = {
+export default  {
     bind: function(el, binding, vNode) {
         if (typeof binding.value !== 'function') {
             throw 'callback must be a function';
@@ -55,5 +55,3 @@ const longpress = {
         el.removeEventListener('click', el.handler);
     }
 };
-
-export default longpress;

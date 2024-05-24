@@ -2,7 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import routes from './routes';
 import dynamicRouter from './dynamicRouter';
-import { addRouter } from '@/common/common';
+import { addRouter } from '@/utils';
 import pinia from '@/store/store';
 import mainStore from '@/store/mainStore';
 
