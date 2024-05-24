@@ -31,7 +31,7 @@
 </template>
 <script setup>
 import dynamicRouter from '@/router/dynamicRouter';
-import { addRouter } from '@/common/common';
+import { addRouter } from '@/utils';
 import storeObj from '@/store/index.js';
 import router from '@/router/index.js';
 let { setUserInfo } = storeObj.mainStore;

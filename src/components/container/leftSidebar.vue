@@ -49,7 +49,7 @@
 </template>
 <script setup>
 import dynamicRouter from '@/router/dynamicRouter';
-import { deepCopy } from '@/common/common.js';
+import { deepCopy } from '@/utils';
 let props = defineProps({
     //是否收起菜单 true 收起
     value: {

@@ -21,10 +21,11 @@ let props = defineProps({
         default: () => false
     }
 });
-let emit = defineEmits(['value:update']);
+console.log('props', props);
+let emit = defineEmits(['input']);
 //切换左侧收起/展开
 function switchActFun() {
-    emit('value:update', props.value);
+    emit('input', !props.value);
 }
 
 function logout() {
